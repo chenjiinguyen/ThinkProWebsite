@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+
+<h4><a href="#FilterLoai" data-toggle="collapse" class="opened">Loại</a></h4>
+<div class="collapse show" id="FilterLoai">
+    @for (int i = 0; i < ViewBag.ListLoai.Count; i++)
+    {
+        <ul>
+            <li>
+                <label class="container_check">
+                    @ViewBag.ListLoai[i].TENLOAI <small> @ViewBag.CountLoai[i]</small>
+                    <input  value="@ViewBag.ListLoai[i].ID_LOAI" type="checkbox" @((ViewBag._ListLoai.Contains(ViewBag.ListLoai[i].ID_LOAI))?"checked":"") >
+                    <span class="checkmark"></span>
+                </label>
+
+            </li>
+
+        </ul>
+    }
+</div>
+
+

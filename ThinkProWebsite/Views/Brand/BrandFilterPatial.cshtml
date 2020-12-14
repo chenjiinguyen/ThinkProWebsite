@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = null;
+}
+
+<h4><a href="#FilterBrand" data-toggle="collapse" class="opened">Thương Hiệu</a></h4>
+<div class="collapse show" id="FilterBrand">
+    @for(int i = 0; i < ViewBag.ListBrand.Count; i++)
+    {
+    <ul>
+        <li>
+            <label class="container_check">
+                @ViewBag.ListBrand[i].TENTH <small> @ViewBag.CountBrand[i]</small>
+                <input class="FilterBrandCheckBox" value="@ViewBag.ListBrand[i].ID_BRAND" type="checkbox"  @((ViewBag._ListBrand.Contains(ViewBag.ListBrand[i].ID_BRAND))?"checked":"")>
+                <span class="checkmark"></span>
+            </label>
+        </li>
+
+    </ul>
+    }
+</div>
+
