@@ -2642,6 +2642,8 @@ namespace ThinkProWebsite.Models
 		
 		private System.Nullable<System.DateTime> _NGAYGIO;
 		
+		private string _TIEUDE;
+		
 		private string _NOIDUNG;
 		
 		private int _XEPHANG;
@@ -2660,6 +2662,8 @@ namespace ThinkProWebsite.Models
     partial void OnHOTENChanged();
     partial void OnNGAYGIOChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYGIOChanged();
+    partial void OnTIEUDEChanging(string value);
+    partial void OnTIEUDEChanged();
     partial void OnNOIDUNGChanging(string value);
     partial void OnNOIDUNGChanged();
     partial void OnXEPHANGChanging(int value);
@@ -2756,7 +2760,27 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOIDUNG", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TIEUDE", DbType="NVarChar(100)")]
+		public string TIEUDE
+		{
+			get
+			{
+				return this._TIEUDE;
+			}
+			set
+			{
+				if ((this._TIEUDE != value))
+				{
+					this.OnTIEUDEChanging(value);
+					this.SendPropertyChanging();
+					this._TIEUDE = value;
+					this.SendPropertyChanged("TIEUDE");
+					this.OnTIEUDEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOIDUNG", DbType="NText", UpdateCheck=UpdateCheck.Never)]
 		public string NOIDUNG
 		{
 			get

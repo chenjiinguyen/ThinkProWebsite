@@ -59,5 +59,23 @@ namespace ThinkProWebsite.Controllers
             ViewBag._ListLoai = _ListLoai;
             return PartialView();
         }
+
+        public ActionResult ProductRelatedPartial(string loai, string brand)
+        {
+            var listProducts = db.SANPHAMs.Where(t => t.ID_LOAI == loai || t.ID_BRAND == brand).OrderBy(x => Guid.NewGuid()).Take(5).ToList();
+            return PartialView(listProducts);
+        }
+
+        public ActionResult ProductYouCanMayLikePartial(string loai, string brand)
+        {
+            var listProducts = db.SANPHAMs.OrderBy(x => Guid.NewGuid()).Take(5).ToList();
+            return PartialView(listProducts);
+        }
+
+        public ActionResult ProductNewPartial()
+        {
+            var listProducts = db.SANPHAMs.OrderByDescending(t=> t.ID_SP).Take(8).ToList();
+            return PartialView(listProducts);
+        }
     }
 }

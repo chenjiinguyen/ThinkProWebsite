@@ -498,7 +498,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Partial\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\ThinkPro.dbml">
@@ -537,6 +536,10 @@
     <None Include="Content\bootstrap-reboot.css.map" />
     <None Include="Content\bootstrap-grid.min.css.map" />
     <None Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Views\Partial\ProductRelatedPartial.cshtml" />
+    <Content Include="Views\Partial\ProductNewPartial.cshtml" />
+    <Content Include="Views\Partial\ProductYouCanMayLikePartial.cshtml" />
+    <Content Include="Views\Home\Review.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

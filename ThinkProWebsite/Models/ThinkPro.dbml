@@ -124,7 +124,8 @@
       <Column Name="ID_SP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="HOTEN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NGAYGIO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NOIDUNG" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TIEUDE" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NOIDUNG" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="XEPHANG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="SANPHAM_DANHGIA" Member="SANPHAM" ThisKey="ID_SP" OtherKey="ID_SP" Type="SANPHAM" IsForeignKey="true" />
     </Type>

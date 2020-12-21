@@ -1,9 +1,7 @@
 ﻿@model ThinkProWebsite.Models.SANPHAM
 @using ThinkProWebsite.Models;
-@{
-    ViewBag.Title = @Html.DisplayFor(model => model.TENSP);
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = @Html.DisplayFor(model => model.TENSP);
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 <!-- SPECIFIC CSS -->
 <link href="~/assets/css/product_page.css" rel="stylesheet">
 
@@ -50,7 +48,7 @@
                     <em>@ViewBag.ListReview.Count reviews</em>
                 </span>
                 @*<p><small>SKU: MTKRY-001</small><br>Sed ex labitur adolescens scriptorem. Te saepe verear tibique sed. Et wisi ridens vix, lorem iudico blandit mel cu. Ex vel sint zril oportere, amet wisi aperiri te cum.</p>
-        <p>Vix patrioque cotidieque ad, iusto probatus volutpat id pri. Amet dicam omnesque at est, voluptua assueverit ut has, modo hinc nec ea. Quas nulla labore est ne, est in quod solet labitur, sit ne probo mandamus.</p>*@
+                    <p>Vix patrioque cotidieque ad, iusto probatus volutpat id pri. Amet dicam omnesque at est, voluptua assueverit ut has, modo hinc nec ea. Quas nulla labore est ne, est in quod solet labitur, sit ne probo mandamus.</p>*@
                 <div class="prod_options">
                     <div class="row">
                         <label class="col-xl-5 col-lg-5  col-md-6 col-6"><strong>Quantity</strong></label>
@@ -71,7 +69,7 @@
                 </div>
             </div>
             <!-- /prod_info -->
-           
+
         </div>
     </div>
     <!-- /row -->
@@ -112,33 +110,78 @@
                             <div class="col-md-6">
                                 @if (ViewBag.InfoProduct != null)
                                 {
-                                    <h3>Thông Tin Sản Phẩm</h3>
+                    <h3>Thông Tin Sản Phẩm</h3>
                                     <div class="table-responsive">
                                         <table class="table table-sm table-striped">
                                             <tbody>
-                                                @if(ViewBag.InfoProduct.VIXULY.Count > 0){
-                                                <tr>
-                                                    <td><strong>Color</strong></td>
-                                                    <td>Blue, Purple</td>
-                                                </tr>
-                                                }
-
-                                                <tr>
-                                                    <td><strong>Size</strong></td>
-                                                    <td>150x100x100</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Weight</strong></td>
-                                                    <td>0.6kg</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Manifacturer</strong></td>
-                                                    <td>Manifacturer</td>
-                                                </tr>
+                                                @if (ViewBag.InfoProduct.VIXULY.Length > 0)
+                                                {
+                                <tr>
+                                    <td><strong>Vi Xử Lý</strong></td>
+                                    <td>@ViewBag.InfoProduct.VIXULY</td>
+                                </tr>}
+                                                @if (ViewBag.InfoProduct.MANHINH.Length > 0)
+                                                {
+                                <tr>
+                                    <td><strong>Màn Hình</strong></td>
+                                    <td>@ViewBag.InfoProduct.MANHINH</td>
+                                </tr>}
+                                                @if (ViewBag.InfoProduct.RAM.Length > 0)
+                                                {
+                                <tr>
+                                    <td><strong>RAM</strong></td>
+                                    <td>@ViewBag.InfoProduct.RAM</td>
+                                </tr>
+}
+                                                @if (ViewBag.InfoProduct.CARDDOHOA.Length > 0)
+                                                {
+                                <tr>
+                                    <td><strong>Đồ Họa</strong></td>
+                                    <td>@ViewBag.InfoProduct.CARDDOHOA</td>
+                                </tr>
+}
+                                                @if (ViewBag.InfoProduct.LUUTRU.Length > 0)
+                                                {
+                                <tr>
+                                    <td><strong>Lưu Trữ</strong></td>
+                                    <td>@ViewBag.InfoProduct.LUUTRU</td>
+                                </tr>}
+                                                @if (ViewBag.InfoProduct.PIN.Length > 0)
+                                                {
+                                <tr>
+                                    <td><strong>Pin</strong></td>
+                                    <td>@ViewBag.InfoProduct.PIN</td>
+                                </tr>
+}
+                                                @if (ViewBag.InfoProduct.KETNOI.Length > 0)
+                                                {
+                                <tr>
+                                    <td><strong>Kết Nối</strong></td>
+                                    <td>@ViewBag.InfoProduct.KETNOI</td>
+                                </tr>}
+                                                @if (ViewBag.InfoProduct.TRONGLUONG.Length > 0)
+                                                {
+                                <tr>
+                                    <td><strong>Trọng Lượng</strong></td>
+                                    <td>@ViewBag.InfoProduct.TRONGLUONG</td>
+                                </tr>
+}
+                                                @if (ViewBag.InfoProduct.HEDIEUHANH.Length > 0)
+                                                {
+                                <tr>
+                                    <td><strong>Hệ Điều Hành</strong></td>
+                                    <td>@ViewBag.InfoProduct.HEDIEUHANH</td>
+                                </tr>}
+                                                @if (ViewBag.InfoProduct.MAUSAC.Length > 0)
+                                                {
+                                <tr>
+                                    <td><strong>Màu Sắc</strong></td>
+                                    <td>@ViewBag.InfoProduct.MAUSAC</td>
+                                </tr>
+}
                                             </tbody>
                                         </table>
-                                    </div>
-                                }
+                                    </div>}
 
                                 <!-- /table-responsive -->
                             </div>
@@ -159,209 +202,81 @@
                         <div class="row justify-content-between" style="flex-wrap:wrap">
                             @foreach (DANHGIA dg in ViewBag.ListReview)
                             {
-                                <div class="col-lg-6">
-                                    <div class="review_content">
-                                        <div class="clearfix add_bottom_10">
-                                            <span class="rating">
-                                                <i class="icon-star voted"></i>
-                                                <i class="icon-star voted"></i>
-                                                <i class="icon-star voted"></i>
-                                                <i class="icon-star voted"></i>
-                                                <i class="icon-star voted"></i>
+                <div class="col-lg-6">
+                    <div class="review_content">
+                        <div class="clearfix add_bottom_10">
+                            <span class="rating">
+                                <i class="icon-star voted"></i>
+                                <i class="icon-star voted"></i>
+                                <i class="icon-star voted"></i>
+                                <i class="icon-star voted"></i>
+                                <i class="icon-star voted"></i>
 
-                                                <em>@dg.XEPHANG /5.0</em>
-                                            </span>
-                                            <em>@dg.NGAYGIO</em>
-                                        </div>
-                                        <h4>"Đánh Giá"</h4>
-                                        <p>@dg.NOIDUNG</p>
-                                    </div>
-                                </div>
-                            }
-                        <p class="text-right"><a href="leave-review.html" class="btn_1">Leave a review</a></p>
+                                <em>@dg.XEPHANG /5.0</em>
+                            </span>
+                            <em>@dg.NGAYGIO</em>
+                        </div>
+                        <h4>@dg.TIEUDE</h4>
+                        <p>@dg.NOIDUNG</p>
                     </div>
-                    <!-- /card-body -->
-                </div>
-            </div>
-        </div>
-        <!-- /tab-content -->
-    </div>
-</div>
+                </div>}
 
-<div class="container margin_60_35">
-    <div class="main_title">
-        <h2>Related</h2>
-        <span>Products</span>
-        <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="text-left"><a href="@Url.Action("Review","Home",new {id = Model.ID_SP })" class="btn_1">Đăng Nhận Xét</a></p>
+                            </div>
+                        </div>
+                        <!-- /card-body -->
+                    </div>
+                </div>
+            </div>
+            <!-- /tab-content -->
+        </div>
     </div>
-    <div class="owl-carousel owl-theme products_carousel">
-        <div class="item">
-            <div class="grid_item">
-                <span class="ribbon new">New</span>
-                <figure>
-                    <a href="product-detail-1.html">
-                        <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/4.jpg" alt="">
-                    </a>
-                </figure>
-                <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                <a href="product-detail-1.html">
-                    <h3>ACG React Terra</h3>
-                </a>
-                <div class="price_box">
-                    <span class="new_price">$110.00</span>
-                </div>
-                <ul>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-                </ul>
-            </div>
-            <!-- /grid_item -->
-        </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="grid_item">
-                <span class="ribbon new">New</span>
-                <figure>
-                    <a href="product-detail-1.html">
-                        <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/5.jpg" alt="">
-                    </a>
-                </figure>
-                <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                <a href="product-detail-1.html">
-                    <h3>Air Zoom Alpha</h3>
-                </a>
-                <div class="price_box">
-                    <span class="new_price">$140.00</span>
-                </div>
-                <ul>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-                </ul>
-            </div>
-            <!-- /grid_item -->
-        </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="grid_item">
-                <span class="ribbon hot">Hot</span>
-                <figure>
-                    <a href="product-detail-1.html">
-                        <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/8.jpg" alt="">
-                    </a>
-                </figure>
-                <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                <a href="product-detail-1.html">
-                    <h3>Air Color 720</h3>
-                </a>
-                <div class="price_box">
-                    <span class="new_price">$120.00</span>
-                </div>
-                <ul>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-                </ul>
-            </div>
-            <!-- /grid_item -->
-        </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="grid_item">
-                <span class="ribbon off">-30%</span>
-                <figure>
-                    <a href="product-detail-1.html">
-                        <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/2.jpg" alt="">
-                    </a>
-                </figure>
-                <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                <a href="product-detail-1.html">
-                    <h3>Okwahn II</h3>
-                </a>
-                <div class="price_box">
-                    <span class="new_price">$90.00</span>
-                    <span class="old_price">$170.00</span>
-                </div>
-                <ul>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-                </ul>
-            </div>
-            <!-- /grid_item -->
-        </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="grid_item">
-                <span class="ribbon off">-50%</span>
-                <figure>
-                    <a href="product-detail-1.html">
-                        <img class="owl-lazy" src="~/assets/img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/3.jpg" alt="">
-                    </a>
-                </figure>
-                <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                <a href="product-detail-1.html">
-                    <h3>Air Wildwood ACG</h3>
-                </a>
-                <div class="price_box">
-                    <span class="new_price">$75.00</span>
-                    <span class="old_price">$155.00</span>
-                </div>
-                <ul>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-                </ul>
-            </div>
-            <!-- /grid_item -->
-        </div>
-        <!-- /item -->
-    </div>
-    <!-- /products_carousel -->
-</div>
-<!-- /container -->
 
-<div class="feat">
-    <div class="container">
-        <ul>
-            <li>
-                <div class="box">
-                    <i class="ti-gift"></i>
-                    <div class="justify-content-center">
-                        <h3>Free Shipping</h3>
-                        <p>For all oders over $99</p>
+    @Html.Action("ProductRelatedPartial", "Partial", new { loai = Model.ID_LOAI, brand = Model.ID_BRAND })
+
+    <div class="feat">
+        <div class="container">
+            <ul>
+                <li>
+                    <div class="box">
+                        <i class="ti-gift"></i>
+                        <div class="justify-content-center">
+                            <h3>Miễn Phí Giao Hàng</h3>
+                            <p>Cho các đơn hàng hơn 2,000,000 VND</p>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <i class="ti-wallet"></i>
-                    <div class="justify-content-center">
-                        <h3>Secure Payment</h3>
-                        <p>100% secure payment</p>
+                </li>
+                <li>
+                    <div class="box">
+                        <i class="ti-wallet"></i>
+                        <div class="justify-content-center">
+                            <h3>Thanh Toán Bảo Mật</h3>
+                            <p>100% Thanh Toán Bảo Mật</p>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <i class="ti-headphone-alt"></i>
-                    <div class="justify-content-center">
-                        <h3>24/7 Support</h3>
-                        <p>Online top support</p>
+                </li>
+                <li>
+                    <div class="box">
+                        <i class="ti-headphone-alt"></i>
+                        <div class="justify-content-center">
+                            <h3>Hỗ Trợ 24/7</h3>
+                            <p>Luôn hỗ trợ khách hành trực tuyến</p>
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
-<!--/feat-->
-<script src="~/assets/js/sticky_sidebar.min.js"></script>
-<script>
-		// Sticky sidebar
-		$('#sidebar_fixed').theiaStickySidebar({
-			minWidth: 991,
-			updateSidebarHeight: false,
-			additionalMarginTop: 90
-		});
-</script>
+    <!--/feat-->
+    <script src="~/assets/js/sticky_sidebar.min.js"></script>
+    <script>
+        // Sticky sidebar
+        $('#sidebar_fixed').theiaStickySidebar({
+            minWidth: 991,
+            updateSidebarHeight: false,
+            additionalMarginTop: 90
+        });
+    </script>
