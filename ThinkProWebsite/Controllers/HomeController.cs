@@ -30,11 +30,13 @@ namespace ThinkProWebsite.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Products(string loai = "", string brand = "")
+        public ActionResult Products(string loai = "", string brand = "", int paging = 1)
         {
+            int PageSize = 12;
             ViewBag.loai = loai;
             ViewBag.brand = brand;
             List<string> _ListBrand = (brand == "") ? new List<string>() : brand.Split(',').ToList();
+
 
             var ListProduct = new List<SANPHAM>();
             if (loai == "" && _ListBrand.Count == 0)
@@ -44,15 +46,15 @@ namespace ThinkProWebsite.Controllers
             }
             else
             {
-                if (loai != "")
+                if (loai != "" && _ListBrand.Count == 0)
                 {
                     ListProduct = db.SANPHAMs.Where(t => t.ID_LOAI == loai).ToList();
                     var Loai = db.LOAIs.Single(t => t.ID_LOAI == loai);
                     ViewBag.Name = Loai.TENLOAI;
                 }
-                else if (_ListBrand.Count > 0)
+                else if (_ListBrand.Count > 0 && loai == "")
                 {
-                    ListProduct = db.SANPHAMs.Where(t => _ListBrand.Contains(t.ID_BRAND)).ToList();
+                    ListProduct = db.SANPHAMs.Where(t =>  _ListBrand.Contains(t.ID_BRAND)).ToList();
                     ViewBag.Name = "Danh Sách Sản Phẩm";
                 }
                 else
@@ -62,9 +64,10 @@ namespace ThinkProWebsite.Controllers
                     ViewBag.Name = Loai.TENLOAI;
                 }
             }
-
-
-
+            int count = ListProduct.Count;
+            ViewBag.MaxPage = Math.Ceiling((double)count / PageSize);
+            ViewBag.Page = paging;
+            ListProduct = ListProduct.Skip((paging - 1) * PageSize).Take(PageSize).ToList();
             return View(ListProduct);
         }
 
