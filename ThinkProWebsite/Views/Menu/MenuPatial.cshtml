@@ -1,8 +1,7 @@
-﻿
-@using ThinkProWebsite.Models
+﻿@using ThinkProWebsite.Models
 @{
     Layout = null;
- }
+}
 
 
 <nav class="categories">
@@ -20,17 +19,17 @@
             </span>
             <div id="menu">
                 <ul>
-                   
+
                     @foreach (LOAI loai in ViewBag.Loai)
                     {
                         <li>
-                             <span><a href="#@loai.ID_LOAI">@loai.TENLOAI</a></span>
-                             <ul>
-                                 @foreach (THUONGHIEU th in ViewBag.ThuongHieu)
-                                 {
-                                     <li><a href="#@th.ID_BRAND">@th.TENTH</a></li>
-                                 }
-                             </ul>
+                            <span><a href="@Url.Action("Products","Home",new {loai = loai.ID_LOAI })">@loai.TENLOAI</a></span>
+                            <ul>
+                                @foreach (THUONGHIEU th in ViewBag.ThuongHieu)
+                                {
+                                    <li><a href="@Url.Action("Products","Home",new {loai = loai.ID_LOAI,brand = th.ID_BRAND })">@th.TENTH</a></li>
+                                }
+                            </ul>
                         </li>
                     }
 

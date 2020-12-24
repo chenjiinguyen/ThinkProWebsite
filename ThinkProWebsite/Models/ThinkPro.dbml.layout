@@ -135,15 +135,15 @@
         <classShapeMoniker Id="d4fbda7d-7001-44fa-a6b6-5618447f2858" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5 : 6.125); (5 : 4.96519903320312); (6.25 : 4.96519903320312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/ThinkProDataContext/SANPHAM/SANPHAM_CHITIETPN" />
+    <associationConnector edgePoints="[(4.5 : 4.6170068359375); (4.5 : 5.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ThinkProDataContext/SANPHAM/SANPHAM_CUNGUNG" />
       <nodes>
         <classShapeMoniker Id="69e5b711-7495-45e1-ab5b-6c9cd09fe492" />
         <classShapeMoniker Id="57d62dfb-a001-4618-b217-3bfeabc8b4cb" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 9.01585824979968); (5.6875 : 9.20335824979968); (5.6875 : 8.5625); (5.81607443490112 : 8.69107443490112 : JumpStart); (5.93392556509888 : 8.80892556509888 : JumpEnd); (6.25 : 9.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/ThinkProDataContext/SANPHAM/SANPHAM_DANHGIA" />
+    <associationConnector edgePoints="[(2.75 : 3.59699625651042); (3.04166666666667 : 3.59699625651042 : JumpStart); (3.30208333333333 : 3.59699625651042 : JumpEnd); (3.5 : 3.59699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ThinkProDataContext/LOAI/LOAI_SANPHAM" />
       <nodes>
         <classShapeMoniker Id="69e5b711-7495-45e1-ab5b-6c9cd09fe492" />
         <classShapeMoniker Id="8e03a92c-9922-47e6-a1b3-81e962461e68" />
@@ -156,7 +156,7 @@
         <classShapeMoniker Id="69e5b711-7495-45e1-ab5b-6c9cd09fe492" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 9.02047363441506); (5.81607443490112 : 9.33654806931618 : JumpStart); (5.93392556509888 : 9.45439919951394 : JumpEnd); (6.0625 : 9.58297363441506); (6.0625 : 13.4623527018229); (6.25 : 13.4623527018229)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 4.55546737439904); (5.81607443490112 : 4.87154180930016 : JumpStart); (5.93392556509888 : 4.98939293949792 : JumpEnd); (6.0625 : 5.11796737439904); (6.0625 : 11.3373527018229); (6.25 : 11.3373527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ThinkProDataContext/SANPHAM/SANPHAM_THONGTIN" />
       <nodes>
         <classShapeMoniker Id="69e5b711-7495-45e1-ab5b-6c9cd09fe492" />

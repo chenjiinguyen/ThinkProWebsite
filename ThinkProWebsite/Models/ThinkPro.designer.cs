@@ -116,15 +116,15 @@ namespace ThinkProWebsite.Models
 		{
 			get
 			{
-				return this.GetTable<CHITIETPN>();
+				return this.GetTable<CHITIETHD>();
 			}
 		}
 		
-		public System.Data.Linq.Table<DANHGIA> DANHGIAs
+		public System.Data.Linq.Table<CUNGUNG> CUNGUNGs
 		{
 			get
 			{
-				return this.GetTable<DANHGIA>();
+				return this.GetTable<CUNGUNG>();
 			}
 		}
 		
@@ -219,6 +219,198 @@ namespace ThinkProWebsite.Models
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CHITIETHD")]
 	public partial class CHITIETHD : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ID_HD;
+		
+		private string _ID_SP;
+		
+		private System.Nullable<int> _SOLUONG;
+		
+		private EntityRef<HOADON> _HOADON;
+		
+		private EntityRef<SANPHAM> _SANPHAM;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_HDChanging(string value);
+    partial void OnID_HDChanged();
+    partial void OnID_SPChanging(string value);
+    partial void OnID_SPChanged();
+    partial void OnSOLUONGChanging(System.Nullable<int> value);
+    partial void OnSOLUONGChanged();
+    #endregion
+		
+		public CHITIETHD()
+		{
+			this._HOADON = default(EntityRef<HOADON>);
+			this._SANPHAM = default(EntityRef<SANPHAM>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HD", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_HD
+		{
+			get
+			{
+				return this.GetTable<DANHGIA>();
+			}
+			set
+			{
+				if ((this._ID_HD != value))
+				{
+					if (this._HOADON.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_HDChanging(value);
+					this.SendPropertyChanging();
+					this._ID_HD = value;
+					this.SendPropertyChanged("ID_HD");
+					this.OnID_HDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_SP", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_SP
+		{
+			get
+			{
+				return this._ID_SP;
+			}
+			set
+			{
+				if ((this._ID_SP != value))
+				{
+					if (this._SANPHAM.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_SPChanging(value);
+					this.SendPropertyChanging();
+					this._ID_SP = value;
+					this.SendPropertyChanged("ID_SP");
+					this.OnID_SPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOLUONG", DbType="Int")]
+		public System.Nullable<int> SOLUONG
+		{
+			get
+			{
+				return this._SOLUONG;
+			}
+			set
+			{
+				if ((this._SOLUONG != value))
+				{
+					this.OnSOLUONGChanging(value);
+					this.SendPropertyChanging();
+					this._SOLUONG = value;
+					this.SendPropertyChanged("SOLUONG");
+					this.OnSOLUONGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HOADON_CHITIETHD", Storage="_HOADON", ThisKey="ID_HD", OtherKey="ID_HD", IsForeignKey=true)]
+		public HOADON HOADON
+		{
+			get
+			{
+				return this._HOADON.Entity;
+			}
+			set
+			{
+				HOADON previousValue = this._HOADON.Entity;
+				if (((previousValue != value) 
+							|| (this._HOADON.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._HOADON.Entity = null;
+						previousValue.CHITIETHDs.Remove(this);
+					}
+					this._HOADON.Entity = value;
+					if ((value != null))
+					{
+						value.CHITIETHDs.Add(this);
+						this._ID_HD = value.ID_HD;
+					}
+					else
+					{
+						this._ID_HD = default(string);
+					}
+					this.SendPropertyChanged("HOADON");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SANPHAM_CHITIETHD", Storage="_SANPHAM", ThisKey="ID_SP", OtherKey="ID_SP", IsForeignKey=true)]
+		public SANPHAM SANPHAM
+		{
+			get
+			{
+				return this._SANPHAM.Entity;
+			}
+			set
+			{
+				SANPHAM previousValue = this._SANPHAM.Entity;
+				if (((previousValue != value) 
+							|| (this._SANPHAM.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SANPHAM.Entity = null;
+						previousValue.CHITIETHDs.Remove(this);
+					}
+					this._SANPHAM.Entity = value;
+					if ((value != null))
+					{
+						value.CHITIETHDs.Add(this);
+						this._ID_SP = value.ID_SP;
+					}
+					else
+					{
+						this._ID_SP = default(string);
+					}
+					this.SendPropertyChanged("SANPHAM");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CHITIETPN")]
+	public partial class CHITIETPN : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -409,21 +601,17 @@ namespace ThinkProWebsite.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CHITIETPN")]
-	public partial class CHITIETPN : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CUNGUNG")]
+	public partial class CUNGUNG : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _ID_PN;
+		private string _ID_NCC;
 		
 		private string _ID_SP;
 		
-		private int _SOLUONGNHAP;
-		
-		private int _DONGIANHAP;
-		
-		private EntityRef<PHIEUNHAP> _PHIEUNHAP;
+		private EntityRef<NHACUNGCAP> _NHACUNGCAP;
 		
 		private EntityRef<SANPHAM> _SANPHAM;
 		
@@ -431,43 +619,39 @@ namespace ThinkProWebsite.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnID_PNChanging(string value);
-    partial void OnID_PNChanged();
+    partial void OnID_NCCChanging(string value);
+    partial void OnID_NCCChanged();
     partial void OnID_SPChanging(string value);
     partial void OnID_SPChanged();
-    partial void OnSOLUONGNHAPChanging(int value);
-    partial void OnSOLUONGNHAPChanged();
-    partial void OnDONGIANHAPChanging(int value);
-    partial void OnDONGIANHAPChanged();
     #endregion
 		
-		public CHITIETPN()
+		public CUNGUNG()
 		{
-			this._PHIEUNHAP = default(EntityRef<PHIEUNHAP>);
+			this._NHACUNGCAP = default(EntityRef<NHACUNGCAP>);
 			this._SANPHAM = default(EntityRef<SANPHAM>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PN", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID_PN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NCC", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_NCC
 		{
 			get
 			{
-				return this._ID_PN;
+				return this._ID_NCC;
 			}
 			set
 			{
-				if ((this._ID_PN != value))
+				if ((this._ID_NCC != value))
 				{
-					if (this._PHIEUNHAP.HasLoadedOrAssignedValue)
+					if (this._NHACUNGCAP.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnID_PNChanging(value);
+					this.OnID_NCCChanging(value);
 					this.SendPropertyChanging();
-					this._ID_PN = value;
-					this.SendPropertyChanged("ID_PN");
-					this.OnID_PNChanged();
+					this._ID_NCC = value;
+					this.SendPropertyChanged("ID_NCC");
+					this.OnID_NCCChanged();
 				}
 			}
 		}
@@ -496,81 +680,41 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOLUONGNHAP", DbType="Int NOT NULL")]
-		public int SOLUONGNHAP
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_CUNGUNG", Storage="_NHACUNGCAP", ThisKey="ID_NCC", OtherKey="ID_NCC", IsForeignKey=true)]
+		public NHACUNGCAP NHACUNGCAP
 		{
 			get
 			{
-				return this._SOLUONGNHAP;
+				return this._NHACUNGCAP.Entity;
 			}
 			set
 			{
-				if ((this._SOLUONGNHAP != value))
-				{
-					this.OnSOLUONGNHAPChanging(value);
-					this.SendPropertyChanging();
-					this._SOLUONGNHAP = value;
-					this.SendPropertyChanged("SOLUONGNHAP");
-					this.OnSOLUONGNHAPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DONGIANHAP", DbType="Int NOT NULL")]
-		public int DONGIANHAP
-		{
-			get
-			{
-				return this._DONGIANHAP;
-			}
-			set
-			{
-				if ((this._DONGIANHAP != value))
-				{
-					this.OnDONGIANHAPChanging(value);
-					this.SendPropertyChanging();
-					this._DONGIANHAP = value;
-					this.SendPropertyChanged("DONGIANHAP");
-					this.OnDONGIANHAPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEUNHAP_CHITIETPN", Storage="_PHIEUNHAP", ThisKey="ID_PN", OtherKey="ID_PN", IsForeignKey=true)]
-		public PHIEUNHAP PHIEUNHAP
-		{
-			get
-			{
-				return this._PHIEUNHAP.Entity;
-			}
-			set
-			{
-				PHIEUNHAP previousValue = this._PHIEUNHAP.Entity;
+				NHACUNGCAP previousValue = this._NHACUNGCAP.Entity;
 				if (((previousValue != value) 
-							|| (this._PHIEUNHAP.HasLoadedOrAssignedValue == false)))
+							|| (this._NHACUNGCAP.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._PHIEUNHAP.Entity = null;
-						previousValue.CHITIETPNs.Remove(this);
+						this._NHACUNGCAP.Entity = null;
+						previousValue.CUNGUNGs.Remove(this);
 					}
-					this._PHIEUNHAP.Entity = value;
+					this._NHACUNGCAP.Entity = value;
 					if ((value != null))
 					{
-						value.CHITIETPNs.Add(this);
-						this._ID_PN = value.ID_PN;
+						value.CUNGUNGs.Add(this);
+						this._ID_NCC = value.ID_NCC;
 					}
 					else
 					{
-						this._ID_PN = default(string);
+						this._ID_NCC = default(string);
 					}
-					this.SendPropertyChanged("PHIEUNHAP");
+					this.SendPropertyChanged("NHACUNGCAP");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SANPHAM_CHITIETPN", Storage="_SANPHAM", ThisKey="ID_SP", OtherKey="ID_SP", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SANPHAM_CUNGUNG", Storage="_SANPHAM", ThisKey="ID_SP", OtherKey="ID_SP", IsForeignKey=true)]
 		public SANPHAM SANPHAM
 		{
 			get
@@ -587,259 +731,12 @@ namespace ThinkProWebsite.Models
 					if ((previousValue != null))
 					{
 						this._SANPHAM.Entity = null;
-						previousValue.CHITIETPNs.Remove(this);
+						previousValue.CUNGUNGs.Remove(this);
 					}
 					this._SANPHAM.Entity = value;
 					if ((value != null))
 					{
-						value.CHITIETPNs.Add(this);
-						this._ID_SP = value.ID_SP;
-					}
-					else
-					{
-						this._ID_SP = default(string);
-					}
-					this.SendPropertyChanged("SANPHAM");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DANHGIA")]
-	public partial class DANHGIA : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _ID_DG;
-		
-		private string _ID_SP;
-		
-		private string _HOTEN;
-		
-		private System.Nullable<System.DateTime> _NGAYGIO;
-		
-		private string _TIEUDE;
-		
-		private string _NOIDUNG;
-		
-		private int _XEPHANG;
-		
-		private EntityRef<SANPHAM> _SANPHAM;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_DGChanging(string value);
-    partial void OnID_DGChanged();
-    partial void OnID_SPChanging(string value);
-    partial void OnID_SPChanged();
-    partial void OnHOTENChanging(string value);
-    partial void OnHOTENChanged();
-    partial void OnNGAYGIOChanging(System.Nullable<System.DateTime> value);
-    partial void OnNGAYGIOChanged();
-    partial void OnTIEUDEChanging(string value);
-    partial void OnTIEUDEChanged();
-    partial void OnNOIDUNGChanging(string value);
-    partial void OnNOIDUNGChanged();
-    partial void OnXEPHANGChanging(int value);
-    partial void OnXEPHANGChanged();
-    #endregion
-		
-		public DANHGIA()
-		{
-			this._SANPHAM = default(EntityRef<SANPHAM>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DG", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID_DG
-		{
-			get
-			{
-				return this._ID_DG;
-			}
-			set
-			{
-				if ((this._ID_DG != value))
-				{
-					this.OnID_DGChanging(value);
-					this.SendPropertyChanging();
-					this._ID_DG = value;
-					this.SendPropertyChanged("ID_DG");
-					this.OnID_DGChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_SP", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string ID_SP
-		{
-			get
-			{
-				return this._ID_SP;
-			}
-			set
-			{
-				if ((this._ID_SP != value))
-				{
-					if (this._SANPHAM.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_SPChanging(value);
-					this.SendPropertyChanging();
-					this._ID_SP = value;
-					this.SendPropertyChanged("ID_SP");
-					this.OnID_SPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HOTEN", DbType="NVarChar(50)")]
-		public string HOTEN
-		{
-			get
-			{
-				return this._HOTEN;
-			}
-			set
-			{
-				if ((this._HOTEN != value))
-				{
-					this.OnHOTENChanging(value);
-					this.SendPropertyChanging();
-					this._HOTEN = value;
-					this.SendPropertyChanged("HOTEN");
-					this.OnHOTENChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYGIO", DbType="DateTime")]
-		public System.Nullable<System.DateTime> NGAYGIO
-		{
-			get
-			{
-				return this._NGAYGIO;
-			}
-			set
-			{
-				if ((this._NGAYGIO != value))
-				{
-					this.OnNGAYGIOChanging(value);
-					this.SendPropertyChanging();
-					this._NGAYGIO = value;
-					this.SendPropertyChanged("NGAYGIO");
-					this.OnNGAYGIOChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TIEUDE", DbType="NVarChar(100)")]
-		public string TIEUDE
-		{
-			get
-			{
-				return this._TIEUDE;
-			}
-			set
-			{
-				if ((this._TIEUDE != value))
-				{
-					this.OnTIEUDEChanging(value);
-					this.SendPropertyChanging();
-					this._TIEUDE = value;
-					this.SendPropertyChanged("TIEUDE");
-					this.OnTIEUDEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOIDUNG", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string NOIDUNG
-		{
-			get
-			{
-				return this._NOIDUNG;
-			}
-			set
-			{
-				if ((this._NOIDUNG != value))
-				{
-					this.OnNOIDUNGChanging(value);
-					this.SendPropertyChanging();
-					this._NOIDUNG = value;
-					this.SendPropertyChanged("NOIDUNG");
-					this.OnNOIDUNGChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XEPHANG", DbType="Int NOT NULL")]
-		public int XEPHANG
-		{
-			get
-			{
-				return this._XEPHANG;
-			}
-			set
-			{
-				if ((this._XEPHANG != value))
-				{
-					this.OnXEPHANGChanging(value);
-					this.SendPropertyChanging();
-					this._XEPHANG = value;
-					this.SendPropertyChanged("XEPHANG");
-					this.OnXEPHANGChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SANPHAM_DANHGIA", Storage="_SANPHAM", ThisKey="ID_SP", OtherKey="ID_SP", IsForeignKey=true)]
-		public SANPHAM SANPHAM
-		{
-			get
-			{
-				return this._SANPHAM.Entity;
-			}
-			set
-			{
-				SANPHAM previousValue = this._SANPHAM.Entity;
-				if (((previousValue != value) 
-							|| (this._SANPHAM.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SANPHAM.Entity = null;
-						previousValue.DANHGIAs.Remove(this);
-					}
-					this._SANPHAM.Entity = value;
-					if ((value != null))
-					{
-						value.DANHGIAs.Add(this);
+						value.CUNGUNGs.Add(this);
 						this._ID_SP = value.ID_SP;
 					}
 					else
@@ -888,8 +785,6 @@ namespace ThinkProWebsite.Models
 		
 		private string _GHICHU;
 		
-		private string _ID_NV;
-		
 		private EntitySet<CHITIETHD> _CHITIETHDs;
 		
 		private EntityRef<NGUOIDUNG> _NGUOIDUNG;
@@ -908,8 +803,6 @@ namespace ThinkProWebsite.Models
     partial void OnTHANHTOANChanged();
     partial void OnGHICHUChanging(string value);
     partial void OnGHICHUChanged();
-    partial void OnID_NVChanging(string value);
-    partial void OnID_NVChanged();
     #endregion
 		
 		public HOADON()
@@ -1019,26 +912,6 @@ namespace ThinkProWebsite.Models
 					this._GHICHU = value;
 					this.SendPropertyChanged("GHICHU");
 					this.OnGHICHUChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NV", DbType="VarChar(10)")]
-		public string ID_NV
-		{
-			get
-			{
-				return this._ID_NV;
-			}
-			set
-			{
-				if ((this._ID_NV != value))
-				{
-					this.OnID_NVChanging(value);
-					this.SendPropertyChanging();
-					this._ID_NV = value;
-					this.SendPropertyChanged("ID_NV");
-					this.OnID_NVChanged();
 				}
 			}
 		}
@@ -1419,7 +1292,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MATKHAU", DbType="VarChar(255)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MATKHAU", DbType="VarChar(100)")]
 		public string MATKHAU
 		{
 			get
@@ -1439,7 +1312,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AVATAR", DbType="VarChar(255)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AVATAR", DbType="VarChar(30)")]
 		public string AVATAR
 		{
 			get
@@ -1578,7 +1451,9 @@ namespace ThinkProWebsite.Models
 		
 		private string _TENNCC;
 		
-		private EntitySet<PHIEUNHAP> _PHIEUNHAPs;
+		private EntitySet<CUNGUNG> _CUNGUNGs;
+		
+		private EntitySet<SANPHAM> _SANPHAMs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1592,7 +1467,8 @@ namespace ThinkProWebsite.Models
 		
 		public NHACUNGCAP()
 		{
-			this._PHIEUNHAPs = new EntitySet<PHIEUNHAP>(new Action<PHIEUNHAP>(this.attach_PHIEUNHAPs), new Action<PHIEUNHAP>(this.detach_PHIEUNHAPs));
+			this._CUNGUNGs = new EntitySet<CUNGUNG>(new Action<CUNGUNG>(this.attach_CUNGUNGs), new Action<CUNGUNG>(this.detach_CUNGUNGs));
+			this._SANPHAMs = new EntitySet<SANPHAM>(new Action<SANPHAM>(this.attach_SANPHAMs), new Action<SANPHAM>(this.detach_SANPHAMs));
 			OnCreated();
 		}
 		
@@ -1636,12 +1512,12 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_PHIEUNHAP", Storage="_PHIEUNHAPs", ThisKey="ID_NCC", OtherKey="ID_NCC")]
-		public EntitySet<PHIEUNHAP> PHIEUNHAPs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_CUNGUNG", Storage="_CUNGUNGs", ThisKey="ID_NCC", OtherKey="ID_NCC")]
+		public EntitySet<CUNGUNG> CUNGUNGs
 		{
 			get
 			{
-				return this._PHIEUNHAPs;
+				return this._CUNGUNGs;
 			}
 			set
 			{
@@ -1964,25 +1840,8 @@ namespace ThinkProWebsite.Models
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_USER", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string ID_USER
 		{
-			get
-			{
-				return this._ID_USER;
-			}
-			set
-			{
-				if ((this._ID_USER != value))
-				{
-					if (this._NGUOIDUNG.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_USERChanging(value);
-					this.SendPropertyChanging();
-					this._ID_USER = value;
-					this.SendPropertyChanged("ID_USER");
-					this.OnID_USERChanged();
-				}
-			}
+			this.SendPropertyChanging();
+			entity.NHACUNGCAP = null;
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HESOLUONG", DbType="Int NOT NULL")]
@@ -2113,6 +1972,8 @@ namespace ThinkProWebsite.Models
 		
 		private string _ID_SP;
 		
+		private string _ID_NCC;
+		
 		private string _ID_BRAND;
 		
 		private string _ID_LOAI;
@@ -2135,13 +1996,15 @@ namespace ThinkProWebsite.Models
 		
 		private EntitySet<CHITIETHD> _CHITIETHDs;
 		
-		private EntitySet<CHITIETPN> _CHITIETPNs;
-		
-		private EntitySet<DANHGIA> _DANHGIAs;
+		private EntitySet<CUNGUNG> _CUNGUNGs;
 		
 		private EntityRef<THONGTIN> _THONGTIN1;
 		
+		private EntitySet<DANHGIA> _DANHGIAs;
+		
 		private EntityRef<LOAI> _LOAI;
+		
+		private EntityRef<NHACUNGCAP> _NHACUNGCAP;
 		
 		private EntityRef<THUONGHIEU> _THUONGHIEU;
 		
@@ -2153,6 +2016,8 @@ namespace ThinkProWebsite.Models
     partial void OnCreated();
     partial void OnID_SPChanging(string value);
     partial void OnID_SPChanged();
+    partial void OnID_NCCChanging(string value);
+    partial void OnID_NCCChanged();
     partial void OnID_BRANDChanging(string value);
     partial void OnID_BRANDChanged();
     partial void OnID_LOAIChanging(string value);
@@ -2178,10 +2043,11 @@ namespace ThinkProWebsite.Models
 		public SANPHAM()
 		{
 			this._CHITIETHDs = new EntitySet<CHITIETHD>(new Action<CHITIETHD>(this.attach_CHITIETHDs), new Action<CHITIETHD>(this.detach_CHITIETHDs));
-			this._CHITIETPNs = new EntitySet<CHITIETPN>(new Action<CHITIETPN>(this.attach_CHITIETPNs), new Action<CHITIETPN>(this.detach_CHITIETPNs));
-			this._DANHGIAs = new EntitySet<DANHGIA>(new Action<DANHGIA>(this.attach_DANHGIAs), new Action<DANHGIA>(this.detach_DANHGIAs));
+			this._CUNGUNGs = new EntitySet<CUNGUNG>(new Action<CUNGUNG>(this.attach_CUNGUNGs), new Action<CUNGUNG>(this.detach_CUNGUNGs));
 			this._THONGTIN1 = default(EntityRef<THONGTIN>);
+			this._DANHGIAs = new EntitySet<DANHGIA>(new Action<DANHGIA>(this.attach_DANHGIAs), new Action<DANHGIA>(this.detach_DANHGIAs));
 			this._LOAI = default(EntityRef<LOAI>);
+			this._NHACUNGCAP = default(EntityRef<NHACUNGCAP>);
 			this._THUONGHIEU = default(EntityRef<THUONGHIEU>);
 			this._TINHTRANG = default(EntityRef<TINHTRANG>);
 			OnCreated();
@@ -2203,6 +2069,30 @@ namespace ThinkProWebsite.Models
 					this._ID_SP = value;
 					this.SendPropertyChanged("ID_SP");
 					this.OnID_SPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NCC", DbType="VarChar(10)")]
+		public string ID_NCC
+		{
+			get
+			{
+				return this._ID_NCC;
+			}
+			set
+			{
+				if ((this._ID_NCC != value))
+				{
+					if (this._NHACUNGCAP.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_NCCChanging(value);
+					this.SendPropertyChanging();
+					this._ID_NCC = value;
+					this.SendPropertyChanged("ID_NCC");
+					this.OnID_NCCChanged();
 				}
 			}
 		}
@@ -2432,29 +2322,16 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SANPHAM_CHITIETPN", Storage="_CHITIETPNs", ThisKey="ID_SP", OtherKey="ID_SP")]
-		public EntitySet<CHITIETPN> CHITIETPNs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SANPHAM_CUNGUNG", Storage="_CUNGUNGs", ThisKey="ID_SP", OtherKey="ID_SP")]
+		public EntitySet<CUNGUNG> CUNGUNGs
 		{
 			get
 			{
-				return this._CHITIETPNs;
+				return this._CUNGUNGs;
 			}
 			set
 			{
-				this._CHITIETPNs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SANPHAM_DANHGIA", Storage="_DANHGIAs", ThisKey="ID_SP", OtherKey="ID_SP")]
-		public EntitySet<DANHGIA> DANHGIAs
-		{
-			get
-			{
-				return this._DANHGIAs;
-			}
-			set
-			{
-				this._DANHGIAs.Assign(value);
+				this._CUNGUNGs.Assign(value);
 			}
 		}
 		
@@ -2484,6 +2361,19 @@ namespace ThinkProWebsite.Models
 					}
 					this.SendPropertyChanged("THONGTIN1");
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SANPHAM_DANHGIA", Storage="_DANHGIAs", ThisKey="ID_SP", OtherKey="ID_SP")]
+		public EntitySet<DANHGIA> DANHGIAs
+		{
+			get
+			{
+				return this._DANHGIAs;
+			}
+			set
+			{
+				this._DANHGIAs.Assign(value);
 			}
 		}
 		
@@ -2517,6 +2407,40 @@ namespace ThinkProWebsite.Models
 						this._ID_LOAI = default(string);
 					}
 					this.SendPropertyChanged("LOAI");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_SANPHAM", Storage="_NHACUNGCAP", ThisKey="ID_NCC", OtherKey="ID_NCC", IsForeignKey=true)]
+		public NHACUNGCAP NHACUNGCAP
+		{
+			get
+			{
+				return this._NHACUNGCAP.Entity;
+			}
+			set
+			{
+				NHACUNGCAP previousValue = this._NHACUNGCAP.Entity;
+				if (((previousValue != value) 
+							|| (this._NHACUNGCAP.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NHACUNGCAP.Entity = null;
+						previousValue.SANPHAMs.Remove(this);
+					}
+					this._NHACUNGCAP.Entity = value;
+					if ((value != null))
+					{
+						value.SANPHAMs.Add(this);
+						this._ID_NCC = value.ID_NCC;
+					}
+					else
+					{
+						this._ID_NCC = default(string);
+					}
+					this.SendPropertyChanged("NHACUNGCAP");
 				}
 			}
 		}
@@ -2621,13 +2545,13 @@ namespace ThinkProWebsite.Models
 			entity.SANPHAM = null;
 		}
 		
-		private void attach_CHITIETPNs(CHITIETPN entity)
+		private void attach_CUNGUNGs(CUNGUNG entity)
 		{
 			this.SendPropertyChanging();
 			entity.SANPHAM = this;
 		}
 		
-		private void detach_CHITIETPNs(CHITIETPN entity)
+		private void detach_CUNGUNGs(CUNGUNG entity)
 		{
 			this.SendPropertyChanging();
 			entity.SANPHAM = null;
@@ -2734,7 +2658,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VIXULY", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VIXULY", DbType="NVarChar(100)")]
 		public string VIXULY
 		{
 			get
@@ -2754,7 +2678,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANHINH", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANHINH", DbType="NVarChar(100)")]
 		public string MANHINH
 		{
 			get
@@ -2774,7 +2698,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RAM", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RAM", DbType="NVarChar(50)")]
 		public string RAM
 		{
 			get
@@ -2794,7 +2718,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CARDDOHOA", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CARDDOHOA", DbType="NVarChar(50)")]
 		public string CARDDOHOA
 		{
 			get
@@ -2814,7 +2738,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LUUTRU", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LUUTRU", DbType="NVarChar(50)")]
 		public string LUUTRU
 		{
 			get
@@ -2834,7 +2758,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PIN", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PIN", DbType="NVarChar(50)")]
 		public string PIN
 		{
 			get
@@ -2854,7 +2778,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KETNOI", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KETNOI", DbType="NVarChar(50)")]
 		public string KETNOI
 		{
 			get
@@ -2874,7 +2798,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRONGLUONG", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRONGLUONG", DbType="NVarChar(20)")]
 		public string TRONGLUONG
 		{
 			get
@@ -2894,7 +2818,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HEDIEUHANH", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HEDIEUHANH", DbType="NVarChar(20)")]
 		public string HEDIEUHANH
 		{
 			get
@@ -2914,7 +2838,7 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAUSAC", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAUSAC", DbType="NVarChar(20)")]
 		public string MAUSAC
 		{
 			get
