@@ -19,17 +19,19 @@
             </span>
             <div id="menu">
                 <ul>
-
+                    <li>
+                        <span><a href="@Url.Action("Products","Home")">Tất Cả Sản Phẩm</a></span>
+                    </li>
                     @foreach (LOAI loai in ViewBag.Loai)
                     {
                         <li>
                             <span><a href="@Url.Action("Products","Home",new {loai = loai.ID_LOAI })">@loai.TENLOAI</a></span>
-                            <ul>
-                                @foreach (THUONGHIEU th in ViewBag.ThuongHieu)
-                                {
-                                    <li><a href="@Url.Action("Products","Home",new {loai = loai.ID_LOAI,brand = th.ID_BRAND })">@th.TENTH</a></li>
-                                }
-                            </ul>
+                            @*<ul>
+                                    @foreach (THUONGHIEU th in ViewBag.ThuongHieu)
+                                    {
+                                        <li><a href="@Url.Action("Products","Home",new {loai = loai.ID_LOAI,brand = th.ID_BRAND })">@th.TENTH</a></li>
+                                    }
+                                </ul>*@
                         </li>
                     }
 

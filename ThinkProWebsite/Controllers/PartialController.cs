@@ -74,8 +74,51 @@ namespace ThinkProWebsite.Controllers
 
         public ActionResult ProductNewPartial()
         {
-            var listProducts = db.SANPHAMs.OrderByDescending(t=> t.ID_SP).Take(8).ToList();
+            var listProducts = db.SANPHAMs.OrderByDescending(t => t.ID_SP).Take(8).ToList();
             return PartialView(listProducts);
+        }
+
+        public ActionResult CartPartial()
+        {
+            List<Cart> lstCart = getCart();
+            ViewBag.CountCart = CountCart();
+            ViewBag.SubTotal = SubTotal();
+            return PartialView(lstCart);
+        }
+
+        public List<Cart> getCart()
+        {
+            List<Cart> lstCart = Session["Cart"] as List<Cart>;
+            if (lstCart == null)
+            {
+                lstCart = new List<Cart>();
+                Session["Cart"] = lstCart;
+            }
+            return lstCart;
+        }
+
+        /// <summary>
+        /// Sub Total products in Cart
+        /// </summary>
+        /// <returns></returns>
+        private double SubTotal()
+        {
+            double sub = 0;
+            List<Cart> lstCart = Session["Cart"] as List<Cart>;
+            if (lstCart != null)
+            {
+                sub = lstCart.Sum(sp => sp.dSubtotal);
+            }
+            return sub;
+        }
+
+
+        private int CountCart()
+        {
+
+            List<Cart> lstCart = Session["Cart"] as List<Cart>;
+
+            return lstCart.Count;
         }
     }
 }

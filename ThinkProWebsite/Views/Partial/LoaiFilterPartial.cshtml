@@ -11,7 +11,7 @@
             <li>
                 <label class="container_check">
                     @ViewBag.ListLoai[i].TENLOAI <small> @ViewBag.CountLoai[i]</small>
-                    <input  value="@ViewBag.ListLoai[i].ID_LOAI" type="checkbox" @((ViewBag._ListLoai.Contains(ViewBag.ListLoai[i].ID_LOAI))?"checked":"") >
+                    <input value="@ViewBag.ListLoai[i].ID_LOAI" type="checkbox" @((ViewBag._ListLoai.Contains(ViewBag.ListLoai[i].ID_LOAI)) ? "checked" : "")>
                     <span class="checkmark"></span>
                 </label>
 
@@ -20,5 +20,4 @@
         </ul>
     }
 </div>
-
 

@@ -15,9 +15,9 @@
         <div class="col-lg-6" id="sidebar_fixed">
             <div class="breadcrumbs">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Category</a></li>
-                    <li>Page active</li>
+                    <li><a href="@Url.Action("Index","Home")">Trang Chủ</a></li>
+                    <li><a href="@Url.Action("Products","Home")">Sản Phẩm</a></li>
+                    <li>@Html.DisplayFor(model => model.TENSP)</li>
                 </ul>
             </div>
             <!-- /page_header -->
@@ -28,18 +28,18 @@
                     {
                         for (int x = 0; x < Math.Floor(ViewBag.AvgReview); x++)
                         {
-                            <i class="icon-star voted"></i>
+                    <i class="icon-star voted"></i>
                         }
                         for (double x = Math.Floor(ViewBag.AvgReview); x < 5; x++)
                         {
-                            <i class="icon-star"></i>
+                    <i class="icon-star"></i>
                         }
                     }
                     else
                     {
                         for (double x = 0; x < 5; x++)
                         {
-                            <i class="icon-star"></i>
+                    <i class="icon-star"></i>
                         }
                     }
 
@@ -51,10 +51,10 @@
                     <p>Vix patrioque cotidieque ad, iusto probatus volutpat id pri. Amet dicam omnesque at est, voluptua assueverit ut has, modo hinc nec ea. Quas nulla labore est ne, est in quod solet labitur, sit ne probo mandamus.</p>*@
                 <div class="prod_options">
                     <div class="row">
-                        <label class="col-xl-5 col-lg-5  col-md-6 col-6"><strong>Quantity</strong></label>
+                        <label class="col-xl-5 col-lg-5  col-md-6 col-6"><strong>Số Lượng</strong></label>
                         <div class="col-xl-4 col-lg-5 col-md-6 col-6">
                             <div class="numbers-row">
-                                <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1">
+                                <input type="text" value="1" id="quantity_1" class="qty2" name="Số Lượng">
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         <div class="price_main"><span class="new_price">@string.Format("{0:N0}", Model.GIATIEN) @Model.DONVITINH</span>@*<span class="percentage">-20%</span> <span class="old_price">$160.00</span>*@</div>
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <div class="btn_add_to_cart"><a href="#0" class="btn_1">Add to Cart</a></div>
+                        <div class="btn_add_to_cart"><a href="@Url.Action("AddCart","Home",new {id = Model.ID_SP, strURL = Url.Action("Product","Home",new {id = Model.ID_SP}) })" class="btn_1">Add to Cart</a></div>
                     </div>
                 </div>
             </div>
@@ -105,83 +105,88 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h3>Details</h3>
-                                <p>@Html.DisplayFor(model => model.THONGTIN)</p>
+                                <p>@Html.Raw(Model.THONGTIN)</p>
                             </div>
                             <div class="col-md-6">
                                 @if (ViewBag.InfoProduct != null)
                                 {
-                    <h3>Thông Tin Sản Phẩm</h3>
-                                    <div class="table-responsive">
-                                        <table class="table table-sm table-striped">
-                                            <tbody>
-                                                @if (ViewBag.InfoProduct.VIXULY.Length > 0)
+                                <h3>Thông Tin Sản Phẩm</h3>
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-striped">
+                                        <tbody>
+                                            @if (ViewBag.InfoProduct.VIXULY != null && ViewBag.InfoProduct.VIXULY.Length > 0)
                                                 {
-                                <tr>
-                                    <td><strong>Vi Xử Lý</strong></td>
-                                    <td>@ViewBag.InfoProduct.VIXULY</td>
-                                </tr>}
-                                                @if (ViewBag.InfoProduct.MANHINH.Length > 0)
-                                                {
-                                <tr>
-                                    <td><strong>Màn Hình</strong></td>
-                                    <td>@ViewBag.InfoProduct.MANHINH</td>
-                                </tr>}
-                                                @if (ViewBag.InfoProduct.RAM.Length > 0)
-                                                {
-                                <tr>
-                                    <td><strong>RAM</strong></td>
-                                    <td>@ViewBag.InfoProduct.RAM</td>
-                                </tr>
+                                            <tr>
+                                                <td><strong>Vi Xử Lý</strong></td>
+                                                <td>@ViewBag.InfoProduct.VIXULY</td>
+                                            </tr>
 }
-                                                @if (ViewBag.InfoProduct.CARDDOHOA.Length > 0)
+                                            @if (ViewBag.InfoProduct.MANHINH != null && ViewBag.InfoProduct.MANHINH.Length > 0)
                                                 {
-                                <tr>
-                                    <td><strong>Đồ Họa</strong></td>
-                                    <td>@ViewBag.InfoProduct.CARDDOHOA</td>
-                                </tr>
+                                            <tr>
+                                                <td><strong>Màn Hình</strong></td>
+                                                <td>@ViewBag.InfoProduct.MANHINH</td>
+                                            </tr>
 }
-                                                @if (ViewBag.InfoProduct.LUUTRU.Length > 0)
+                                            @if (ViewBag.InfoProduct.RAM != null && ViewBag.InfoProduct.RAM.Length > 0)
                                                 {
-                                <tr>
-                                    <td><strong>Lưu Trữ</strong></td>
-                                    <td>@ViewBag.InfoProduct.LUUTRU</td>
-                                </tr>}
-                                                @if (ViewBag.InfoProduct.PIN.Length > 0)
-                                                {
-                                <tr>
-                                    <td><strong>Pin</strong></td>
-                                    <td>@ViewBag.InfoProduct.PIN</td>
-                                </tr>
+                                            <tr>
+                                                <td><strong>RAM</strong></td>
+                                                <td>@ViewBag.InfoProduct.RAM</td>
+                                            </tr>
 }
-                                                @if (ViewBag.InfoProduct.KETNOI.Length > 0)
+                                            @if (ViewBag.InfoProduct.CARDDOHOA != null && ViewBag.InfoProduct.CARDDOHOA.Length > 0)
                                                 {
-                                <tr>
-                                    <td><strong>Kết Nối</strong></td>
-                                    <td>@ViewBag.InfoProduct.KETNOI</td>
-                                </tr>}
-                                                @if (ViewBag.InfoProduct.TRONGLUONG.Length > 0)
-                                                {
-                                <tr>
-                                    <td><strong>Trọng Lượng</strong></td>
-                                    <td>@ViewBag.InfoProduct.TRONGLUONG</td>
-                                </tr>
+                                            <tr>
+                                                <td><strong>Đồ Họa</strong></td>
+                                                <td>@ViewBag.InfoProduct.CARDDOHOA</td>
+                                            </tr>
 }
-                                                @if (ViewBag.InfoProduct.HEDIEUHANH.Length > 0)
+                                            @if (ViewBag.InfoProduct.LUUTRU != null && ViewBag.InfoProduct.LUUTRU.Length > 0)
                                                 {
-                                <tr>
-                                    <td><strong>Hệ Điều Hành</strong></td>
-                                    <td>@ViewBag.InfoProduct.HEDIEUHANH</td>
-                                </tr>}
-                                                @if (ViewBag.InfoProduct.MAUSAC.Length > 0)
-                                                {
-                                <tr>
-                                    <td><strong>Màu Sắc</strong></td>
-                                    <td>@ViewBag.InfoProduct.MAUSAC</td>
-                                </tr>
+                                            <tr>
+                                                <td><strong>Lưu Trữ</strong></td>
+                                                <td>@ViewBag.InfoProduct.LUUTRU</td>
+                                            </tr>
 }
-                                            </tbody>
-                                        </table>
-                                    </div>}
+                                            @if (ViewBag.InfoProduct.PIN != null && ViewBag.InfoProduct.PIN.Length > 0)
+                                                {
+                                            <tr>
+                                                <td><strong>Pin</strong></td>
+                                                <td>@ViewBag.InfoProduct.PIN</td>
+                                            </tr>
+}
+                                            @if (ViewBag.InfoProduct.KETNOI != null && ViewBag.InfoProduct.KETNOI.Length > 0)
+                                                {
+                                            <tr>
+                                                <td><strong>Kết Nối</strong></td>
+                                                <td>@ViewBag.InfoProduct.KETNOI</td>
+                                            </tr>
+}
+                                            @if (ViewBag.InfoProduct.TRONGLUONG != null && ViewBag.InfoProduct.TRONGLUONG.Length > 0)
+                                                {
+                                            <tr>
+                                                <td><strong>Trọng Lượng</strong></td>
+                                                <td>@ViewBag.InfoProduct.TRONGLUONG</td>
+                                            </tr>
+}
+                                            @if (ViewBag.InfoProduct.HEDIEUHANH != null && ViewBag.InfoProduct.HEDIEUHANH.Length > 0)
+                                                {
+                                            <tr>
+                                                <td><strong>Hệ Điều Hành</strong></td>
+                                                <td>@ViewBag.InfoProduct.HEDIEUHANH</td>
+                                            </tr>
+}
+                                            @if (ViewBag.InfoProduct.MAUSAC != null && ViewBag.InfoProduct.MAUSAC.Length > 0)
+                                                {
+                                            <tr>
+                                                <td><strong>Màu Sắc</strong></td>
+                                                <td>@ViewBag.InfoProduct.MAUSAC</td>
+                                            </tr>
+}
+                                        </tbody>
+                                    </table>
+                                </div>}
 
                                 <!-- /table-responsive -->
                             </div>
@@ -202,24 +207,24 @@
                         <div class="row justify-content-between" style="flex-wrap:wrap">
                             @foreach (DANHGIA dg in ViewBag.ListReview)
                             {
-                <div class="col-lg-6">
-                    <div class="review_content">
-                        <div class="clearfix add_bottom_10">
-                            <span class="rating">
-                                <i class="icon-star voted"></i>
-                                <i class="icon-star voted"></i>
-                                <i class="icon-star voted"></i>
-                                <i class="icon-star voted"></i>
-                                <i class="icon-star voted"></i>
+                            <div class="col-lg-6">
+                                <div class="review_content">
+                                    <div class="clearfix add_bottom_10">
+                                        <span class="rating">
+                                            <i class="icon-star voted"></i>
+                                            <i class="icon-star voted"></i>
+                                            <i class="icon-star voted"></i>
+                                            <i class="icon-star voted"></i>
+                                            <i class="icon-star voted"></i>
 
-                                <em>@dg.XEPHANG /5.0</em>
-                            </span>
-                            <em>@dg.NGAYGIO</em>
-                        </div>
-                        <h4>@dg.TIEUDE</h4>
-                        <p>@dg.NOIDUNG</p>
-                    </div>
-                </div>}
+                                            <em>@dg.XEPHANG /5.0</em>
+                                        </span>
+                                        <em>@dg.NGAYGIO</em>
+                                    </div>
+                                    <h4>@dg.TIEUDE</h4>
+                                    <p>@dg.NOIDUNG</p>
+                                </div>
+                            </div>}
 
                         </div>
                         <div class="row">
