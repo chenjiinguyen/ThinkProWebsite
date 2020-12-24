@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="THINKPRO" Class="ThinkProDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=THINKPRO;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="THINKPROConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="THINKPRO_N" Class="ThinkProDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-ANFDFGQ;Initial Catalog=THINKPRO_N;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="THINKPRO_NConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CHITIETHD" Member="CHITIETHDs">
     <Type Name="CHITIETHD">
       <Column Name="ID_HD" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -7,16 +7,6 @@
       <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="HOADON_CHITIETHD" Member="HOADON" ThisKey="ID_HD" OtherKey="ID_HD" Type="HOADON" IsForeignKey="true" />
       <Association Name="SANPHAM_CHITIETHD" Member="SANPHAM" ThisKey="ID_SP" OtherKey="ID_SP" Type="SANPHAM" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.VAITRO" Member="VAITROs">
-    <Type Name="VAITRO">
-      <Column Name="ID_VAITRO" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TENVAITRO" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="DANGNHAP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="HOADON" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NGUOIDUNG" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="VAITRO_NGUOIDUNG" Member="NGUOIDUNGs" ThisKey="ID_VAITRO" OtherKey="ID_VAITRO" Type="NGUOIDUNG" />
     </Type>
   </Table>
   <Table Name="dbo.CHITIETPN" Member="CHITIETPNs">
@@ -72,7 +62,6 @@
       <Column Name="AVATAR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Association Name="NGUOIDUNG_HOADON" Member="HOADONs" ThisKey="ID_USER" OtherKey="ID_USER" Type="HOADON" />
       <Association Name="NGUOIDUNG_NHANVIEN" Member="NHANVIEN" ThisKey="ID_USER" OtherKey="ID_USER" Type="NHANVIEN" Cardinality="One" />
-      <Association Name="NGUOIDUNG_PHIEUNHAP" Member="PHIEUNHAPs" ThisKey="ID_USER" OtherKey="ID_USER" Type="PHIEUNHAP" />
       <Association Name="VAITRO_NGUOIDUNG" Member="VAITRO" ThisKey="ID_VAITRO" OtherKey="ID_VAITRO" Type="VAITRO" IsForeignKey="true" />
     </Type>
   </Table>
@@ -83,23 +72,24 @@
       <Association Name="NHACUNGCAP_PHIEUNHAP" Member="PHIEUNHAPs" ThisKey="ID_NCC" OtherKey="ID_NCC" Type="PHIEUNHAP" />
     </Type>
   </Table>
+  <Table Name="dbo.PHIEUNHAP" Member="PHIEUNHAPs">
+    <Type Name="PHIEUNHAP">
+      <Column Name="ID_PN" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_NV" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ID_NCC" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NGAYNHAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="PHIEUNHAP_CHITIETPN" Member="CHITIETPNs" ThisKey="ID_PN" OtherKey="ID_PN" Type="CHITIETPN" />
+      <Association Name="NHACUNGCAP_PHIEUNHAP" Member="NHACUNGCAP" ThisKey="ID_NCC" OtherKey="ID_NCC" Type="NHACUNGCAP" IsForeignKey="true" />
+      <Association Name="NHANVIEN_PHIEUNHAP" Member="NHANVIEN" ThisKey="ID_NV" OtherKey="ID_USER" Type="NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.NHANVIEN" Member="NHANVIENs">
     <Type Name="NHANVIEN">
       <Column Name="ID_USER" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="HESOLUONG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TINHTRANG" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="NHANVIEN_PHIEUNHAP" Member="PHIEUNHAPs" ThisKey="ID_USER" OtherKey="ID_NV" Type="PHIEUNHAP" />
       <Association Name="NGUOIDUNG_NHANVIEN" Member="NGUOIDUNG" ThisKey="ID_USER" OtherKey="ID_USER" Type="NGUOIDUNG" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PHIEUNHAP" Member="PHIEUNHAPs">
-    <Type Name="PHIEUNHAP">
-      <Column Name="ID_PN" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID_USER" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="ID_NCC" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="NGAYNHAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="PHIEUNHAP_CHITIETPN" Member="CHITIETPNs" ThisKey="ID_PN" OtherKey="ID_PN" Type="CHITIETPN" />
-      <Association Name="NGUOIDUNG_PHIEUNHAP" Member="NGUOIDUNG" ThisKey="ID_USER" OtherKey="ID_USER" Type="NGUOIDUNG" IsForeignKey="true" />
-      <Association Name="NHACUNGCAP_PHIEUNHAP" Member="NHACUNGCAP" ThisKey="ID_NCC" OtherKey="ID_NCC" Type="NHACUNGCAP" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SANPHAM" Member="SANPHAMs">
@@ -152,6 +142,17 @@
       <Column Name="ID_TINHTRANG" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TENTT" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
       <Association Name="TINHTRANG_SANPHAM" Member="SANPHAMs" ThisKey="ID_TINHTRANG" OtherKey="ID_TINHTRANG" Type="SANPHAM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VAITRO" Member="VAITROs">
+    <Type Name="VAITRO">
+      <Column Name="ID_VAITRO" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENVAITRO" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="DANGNHAP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HOADON" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NGUOIDUNG" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PHIEUNHAP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="VAITRO_NGUOIDUNG" Member="NGUOIDUNGs" ThisKey="ID_VAITRO" OtherKey="ID_VAITRO" Type="NGUOIDUNG" />
     </Type>
   </Table>
 </Database>
