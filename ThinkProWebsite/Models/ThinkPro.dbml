@@ -9,6 +9,17 @@
       <Association Name="SANPHAM_CHITIETHD" Member="SANPHAM" ThisKey="ID_SP" OtherKey="ID_SP" Type="SANPHAM" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.VAITRO" Member="VAITROs">
+    <Type Name="VAITRO">
+      <Column Name="ID_VAITRO" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENVAITRO" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="DANGNHAP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HOADON" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NGUOIDUNG" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SANPHAM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="VAITRO_NGUOIDUNG" Member="NGUOIDUNGs" ThisKey="ID_VAITRO" OtherKey="ID_VAITRO" Type="NGUOIDUNG" />
+    </Type>
+  </Table>
   <Table Name="dbo.CHITIETPN" Member="CHITIETPNs">
     <Type Name="CHITIETPN">
       <Column Name="ID_PN" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -60,6 +71,7 @@
       <Column Name="EMAIL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MATKHAU" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="AVATAR" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="GIOITINH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="NGUOIDUNG_HOADON" Member="HOADONs" ThisKey="ID_USER" OtherKey="ID_USER" Type="HOADON" />
       <Association Name="NGUOIDUNG_NHANVIEN" Member="NHANVIEN" ThisKey="ID_USER" OtherKey="ID_USER" Type="NHANVIEN" Cardinality="One" />
       <Association Name="VAITRO_NGUOIDUNG" Member="VAITRO" ThisKey="ID_VAITRO" OtherKey="ID_VAITRO" Type="VAITRO" IsForeignKey="true" />
@@ -142,17 +154,6 @@
       <Column Name="ID_TINHTRANG" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TENTT" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
       <Association Name="TINHTRANG_SANPHAM" Member="SANPHAMs" ThisKey="ID_TINHTRANG" OtherKey="ID_TINHTRANG" Type="SANPHAM" />
-    </Type>
-  </Table>
-  <Table Name="dbo.VAITRO" Member="VAITROs">
-    <Type Name="VAITRO">
-      <Column Name="ID_VAITRO" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TENVAITRO" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="DANGNHAP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="HOADON" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NGUOIDUNG" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="PHIEUNHAP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="VAITRO_NGUOIDUNG" Member="NGUOIDUNGs" ThisKey="ID_VAITRO" OtherKey="ID_VAITRO" Type="NGUOIDUNG" />
     </Type>
   </Table>
 </Database>

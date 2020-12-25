@@ -71,6 +71,36 @@ namespace ThinkProWebsite.Controllers
             return View(ListProduct);
         }
 
+        public ActionResult Search(string q, string brand = "", int paging = 1)
+        {
+            int PageSize = 12;
+            ViewBag.Name = "Tìm Kiếm " + q;
+            ViewBag.brand = brand;
+            ViewBag.Search = q;
+            List<string> _ListBrand = (brand == "") ? new List<string>() : brand.Split(',').ToList();
+
+
+            var ListProduct = new List<SANPHAM>();
+
+            if (_ListBrand.Count == 0)
+            {
+                ListProduct = db.SANPHAMs.Where(t => t.TENSP.Replace(" ", "").ToLower().Contains(q.Replace(" ", "").ToLower())).ToList();
+
+            }
+            else
+            {
+                ListProduct = db.SANPHAMs.Where(t => _ListBrand.Contains(t.ID_BRAND) && t.TENSP.Replace(" ", "").ToLower().Contains(q.Replace(" ", "").ToLower())).ToList();
+
+            }
+
+            int count = ListProduct.Count;
+            ViewBag.MaxPage = Math.Ceiling((double)count / PageSize);
+            ViewBag.Page = paging;
+            ListProduct = ListProduct.Skip((paging - 1) * PageSize).Take(PageSize).ToList();
+            return View(ListProduct);
+        }
+
+
         public ActionResult Review(string id)
         {
             var Product = db.SANPHAMs.SingleOrDefault(u => u.ID_SP == id);

@@ -33,6 +33,9 @@ namespace ThinkProWebsite.Models
     partial void InsertCHITIETHD(CHITIETHD instance);
     partial void UpdateCHITIETHD(CHITIETHD instance);
     partial void DeleteCHITIETHD(CHITIETHD instance);
+    partial void InsertVAITRO(VAITRO instance);
+    partial void UpdateVAITRO(VAITRO instance);
+    partial void DeleteVAITRO(VAITRO instance);
     partial void InsertCHITIETPN(CHITIETPN instance);
     partial void UpdateCHITIETPN(CHITIETPN instance);
     partial void DeleteCHITIETPN(CHITIETPN instance);
@@ -69,9 +72,6 @@ namespace ThinkProWebsite.Models
     partial void InsertTINHTRANG(TINHTRANG instance);
     partial void UpdateTINHTRANG(TINHTRANG instance);
     partial void DeleteTINHTRANG(TINHTRANG instance);
-    partial void InsertVAITRO(VAITRO instance);
-    partial void UpdateVAITRO(VAITRO instance);
-    partial void DeleteVAITRO(VAITRO instance);
     #endregion
 		
 		public ThinkProDataContext() : 
@@ -109,6 +109,14 @@ namespace ThinkProWebsite.Models
 			get
 			{
 				return this.GetTable<CHITIETHD>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VAITRO> VAITROs
+		{
+			get
+			{
+				return this.GetTable<VAITRO>();
 			}
 		}
 		
@@ -205,14 +213,6 @@ namespace ThinkProWebsite.Models
 			get
 			{
 				return this.GetTable<TINHTRANG>();
-			}
-		}
-		
-		public System.Data.Linq.Table<VAITRO> VAITROs
-		{
-			get
-			{
-				return this.GetTable<VAITRO>();
 			}
 		}
 	}
@@ -406,6 +406,216 @@ namespace ThinkProWebsite.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VAITRO")]
+	public partial class VAITRO : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ID_VAITRO;
+		
+		private string _TENVAITRO;
+		
+		private System.Nullable<bool> _DANGNHAP;
+		
+		private System.Nullable<bool> _HOADON;
+		
+		private System.Nullable<bool> _NGUOIDUNG;
+		
+		private System.Nullable<bool> _SANPHAM;
+		
+		private EntitySet<NGUOIDUNG> _NGUOIDUNGs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_VAITROChanging(string value);
+    partial void OnID_VAITROChanged();
+    partial void OnTENVAITROChanging(string value);
+    partial void OnTENVAITROChanged();
+    partial void OnDANGNHAPChanging(System.Nullable<bool> value);
+    partial void OnDANGNHAPChanged();
+    partial void OnHOADONChanging(System.Nullable<bool> value);
+    partial void OnHOADONChanged();
+    partial void OnNGUOIDUNGChanging(System.Nullable<bool> value);
+    partial void OnNGUOIDUNGChanged();
+    partial void OnSANPHAMChanging(System.Nullable<bool> value);
+    partial void OnSANPHAMChanged();
+    #endregion
+		
+		public VAITRO()
+		{
+			this._NGUOIDUNGs = new EntitySet<NGUOIDUNG>(new Action<NGUOIDUNG>(this.attach_NGUOIDUNGs), new Action<NGUOIDUNG>(this.detach_NGUOIDUNGs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_VAITRO", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_VAITRO
+		{
+			get
+			{
+				return this._ID_VAITRO;
+			}
+			set
+			{
+				if ((this._ID_VAITRO != value))
+				{
+					this.OnID_VAITROChanging(value);
+					this.SendPropertyChanging();
+					this._ID_VAITRO = value;
+					this.SendPropertyChanged("ID_VAITRO");
+					this.OnID_VAITROChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENVAITRO", DbType="NVarChar(20)")]
+		public string TENVAITRO
+		{
+			get
+			{
+				return this._TENVAITRO;
+			}
+			set
+			{
+				if ((this._TENVAITRO != value))
+				{
+					this.OnTENVAITROChanging(value);
+					this.SendPropertyChanging();
+					this._TENVAITRO = value;
+					this.SendPropertyChanged("TENVAITRO");
+					this.OnTENVAITROChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DANGNHAP", DbType="Bit")]
+		public System.Nullable<bool> DANGNHAP
+		{
+			get
+			{
+				return this._DANGNHAP;
+			}
+			set
+			{
+				if ((this._DANGNHAP != value))
+				{
+					this.OnDANGNHAPChanging(value);
+					this.SendPropertyChanging();
+					this._DANGNHAP = value;
+					this.SendPropertyChanged("DANGNHAP");
+					this.OnDANGNHAPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HOADON", DbType="Bit")]
+		public System.Nullable<bool> HOADON
+		{
+			get
+			{
+				return this._HOADON;
+			}
+			set
+			{
+				if ((this._HOADON != value))
+				{
+					this.OnHOADONChanging(value);
+					this.SendPropertyChanging();
+					this._HOADON = value;
+					this.SendPropertyChanged("HOADON");
+					this.OnHOADONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGUOIDUNG", DbType="Bit")]
+		public System.Nullable<bool> NGUOIDUNG
+		{
+			get
+			{
+				return this._NGUOIDUNG;
+			}
+			set
+			{
+				if ((this._NGUOIDUNG != value))
+				{
+					this.OnNGUOIDUNGChanging(value);
+					this.SendPropertyChanging();
+					this._NGUOIDUNG = value;
+					this.SendPropertyChanged("NGUOIDUNG");
+					this.OnNGUOIDUNGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SANPHAM", DbType="Bit")]
+		public System.Nullable<bool> SANPHAM
+		{
+			get
+			{
+				return this._SANPHAM;
+			}
+			set
+			{
+				if ((this._SANPHAM != value))
+				{
+					this.OnSANPHAMChanging(value);
+					this.SendPropertyChanging();
+					this._SANPHAM = value;
+					this.SendPropertyChanged("SANPHAM");
+					this.OnSANPHAMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="VAITRO_NGUOIDUNG", Storage="_NGUOIDUNGs", ThisKey="ID_VAITRO", OtherKey="ID_VAITRO")]
+		public EntitySet<NGUOIDUNG> NGUOIDUNGs
+		{
+			get
+			{
+				return this._NGUOIDUNGs;
+			}
+			set
+			{
+				this._NGUOIDUNGs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_NGUOIDUNGs(NGUOIDUNG entity)
+		{
+			this.SendPropertyChanging();
+			entity.VAITRO = this;
+		}
+		
+		private void detach_NGUOIDUNGs(NGUOIDUNG entity)
+		{
+			this.SendPropertyChanging();
+			entity.VAITRO = null;
 		}
 	}
 	
@@ -1259,6 +1469,8 @@ namespace ThinkProWebsite.Models
 		
 		private string _AVATAR;
 		
+		private string _GIOITINH;
+		
 		private EntitySet<HOADON> _HOADONs;
 		
 		private EntityRef<NHANVIEN> _NHANVIEN;
@@ -1285,6 +1497,8 @@ namespace ThinkProWebsite.Models
     partial void OnMATKHAUChanged();
     partial void OnAVATARChanging(string value);
     partial void OnAVATARChanged();
+    partial void OnGIOITINHChanging(string value);
+    partial void OnGIOITINHChanged();
     #endregion
 		
 		public NGUOIDUNG()
@@ -1455,6 +1669,26 @@ namespace ThinkProWebsite.Models
 					this._AVATAR = value;
 					this.SendPropertyChanged("AVATAR");
 					this.OnAVATARChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIOITINH", DbType="NVarChar(50)")]
+		public string GIOITINH
+		{
+			get
+			{
+				return this._GIOITINH;
+			}
+			set
+			{
+				if ((this._GIOITINH != value))
+				{
+					this.OnGIOITINHChanging(value);
+					this.SendPropertyChanging();
+					this._GIOITINH = value;
+					this.SendPropertyChanged("GIOITINH");
+					this.OnGIOITINHChanged();
 				}
 			}
 		}
@@ -3214,216 +3448,6 @@ namespace ThinkProWebsite.Models
 		{
 			this.SendPropertyChanging();
 			entity.TINHTRANG = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VAITRO")]
-	public partial class VAITRO : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _ID_VAITRO;
-		
-		private string _TENVAITRO;
-		
-		private System.Nullable<bool> _DANGNHAP;
-		
-		private System.Nullable<bool> _HOADON;
-		
-		private System.Nullable<bool> _NGUOIDUNG;
-		
-		private System.Nullable<bool> _PHIEUNHAP;
-		
-		private EntitySet<NGUOIDUNG> _NGUOIDUNGs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_VAITROChanging(string value);
-    partial void OnID_VAITROChanged();
-    partial void OnTENVAITROChanging(string value);
-    partial void OnTENVAITROChanged();
-    partial void OnDANGNHAPChanging(System.Nullable<bool> value);
-    partial void OnDANGNHAPChanged();
-    partial void OnHOADONChanging(System.Nullable<bool> value);
-    partial void OnHOADONChanged();
-    partial void OnNGUOIDUNGChanging(System.Nullable<bool> value);
-    partial void OnNGUOIDUNGChanged();
-    partial void OnPHIEUNHAPChanging(System.Nullable<bool> value);
-    partial void OnPHIEUNHAPChanged();
-    #endregion
-		
-		public VAITRO()
-		{
-			this._NGUOIDUNGs = new EntitySet<NGUOIDUNG>(new Action<NGUOIDUNG>(this.attach_NGUOIDUNGs), new Action<NGUOIDUNG>(this.detach_NGUOIDUNGs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_VAITRO", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID_VAITRO
-		{
-			get
-			{
-				return this._ID_VAITRO;
-			}
-			set
-			{
-				if ((this._ID_VAITRO != value))
-				{
-					this.OnID_VAITROChanging(value);
-					this.SendPropertyChanging();
-					this._ID_VAITRO = value;
-					this.SendPropertyChanged("ID_VAITRO");
-					this.OnID_VAITROChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENVAITRO", DbType="NVarChar(20)")]
-		public string TENVAITRO
-		{
-			get
-			{
-				return this._TENVAITRO;
-			}
-			set
-			{
-				if ((this._TENVAITRO != value))
-				{
-					this.OnTENVAITROChanging(value);
-					this.SendPropertyChanging();
-					this._TENVAITRO = value;
-					this.SendPropertyChanged("TENVAITRO");
-					this.OnTENVAITROChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DANGNHAP", DbType="Bit")]
-		public System.Nullable<bool> DANGNHAP
-		{
-			get
-			{
-				return this._DANGNHAP;
-			}
-			set
-			{
-				if ((this._DANGNHAP != value))
-				{
-					this.OnDANGNHAPChanging(value);
-					this.SendPropertyChanging();
-					this._DANGNHAP = value;
-					this.SendPropertyChanged("DANGNHAP");
-					this.OnDANGNHAPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HOADON", DbType="Bit")]
-		public System.Nullable<bool> HOADON
-		{
-			get
-			{
-				return this._HOADON;
-			}
-			set
-			{
-				if ((this._HOADON != value))
-				{
-					this.OnHOADONChanging(value);
-					this.SendPropertyChanging();
-					this._HOADON = value;
-					this.SendPropertyChanged("HOADON");
-					this.OnHOADONChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGUOIDUNG", DbType="Bit")]
-		public System.Nullable<bool> NGUOIDUNG
-		{
-			get
-			{
-				return this._NGUOIDUNG;
-			}
-			set
-			{
-				if ((this._NGUOIDUNG != value))
-				{
-					this.OnNGUOIDUNGChanging(value);
-					this.SendPropertyChanging();
-					this._NGUOIDUNG = value;
-					this.SendPropertyChanged("NGUOIDUNG");
-					this.OnNGUOIDUNGChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PHIEUNHAP", DbType="Bit")]
-		public System.Nullable<bool> PHIEUNHAP
-		{
-			get
-			{
-				return this._PHIEUNHAP;
-			}
-			set
-			{
-				if ((this._PHIEUNHAP != value))
-				{
-					this.OnPHIEUNHAPChanging(value);
-					this.SendPropertyChanging();
-					this._PHIEUNHAP = value;
-					this.SendPropertyChanged("PHIEUNHAP");
-					this.OnPHIEUNHAPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="VAITRO_NGUOIDUNG", Storage="_NGUOIDUNGs", ThisKey="ID_VAITRO", OtherKey="ID_VAITRO")]
-		public EntitySet<NGUOIDUNG> NGUOIDUNGs
-		{
-			get
-			{
-				return this._NGUOIDUNGs;
-			}
-			set
-			{
-				this._NGUOIDUNGs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_NGUOIDUNGs(NGUOIDUNG entity)
-		{
-			this.SendPropertyChanging();
-			entity.VAITRO = this;
-		}
-		
-		private void detach_NGUOIDUNGs(NGUOIDUNG entity)
-		{
-			this.SendPropertyChanging();
-			entity.VAITRO = null;
 		}
 	}
 }

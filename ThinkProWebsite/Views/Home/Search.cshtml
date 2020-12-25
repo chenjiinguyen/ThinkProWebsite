@@ -1,4 +1,4 @@
-﻿@model List<ThinkProWebsite.Models.SANPHAM>
+﻿@model IEnumerable<ThinkProWebsite.Models.SANPHAM>
 
 @{
     ViewBag.Title = ViewBag.Name;
@@ -62,12 +62,12 @@
                 <div class="inner_bt"><a href="#" class="open_filters"><i class="ti-close"></i></a></div>
                 <div class="filter_type version_2">
 
-                    @Html.Action("BrandFilterPartial", "Partial", new { idLoai = ViewBag.loai, idBrand = ViewBag.brand })
+                    @Html.Action("BrandFilterPartial", "Partial", new { idBrand = ViewBag.brand })
                     <!-- /filter_type -->
                 </div>
                 <div class="buttons">
                     <form method="GET">
-                        <input name="loai" type="hidden" value="@ViewBag.loai"/>
+                        <input name="q" type="hidden" value="@ViewBag.Search" />
                         <input name="brand" id="FilterValue" type="hidden" />
                         <button type="submit" id="FilterButton" class="btn_1">Lọc</button> <a href="#0" class="btn_1 gray">Reset</a>
                     </form>
@@ -79,63 +79,77 @@
         <!-- /col -->
         <div class="col-lg-9">
             <div class="row small-gutters">
-                @foreach (var sp in Model)
+                @if (Model.Count() > 0 && Model != null)
                 {
-                    <div class="col-6 col-md-4">
-                        <div class="grid_item">
-                            <span class="ribbon hot">Hot</span>
-                            <figure>
-                                <a href="@Url.Action("Product", "Home",new {id = sp.ID_SP })">
-                                    <img class="img-fluid lazy" src="@sp.ANH_SP" data-src="@sp.ANH_SP" alt="@sp.TENSP">
+                    foreach (var sp in Model)
+                    {
+                        <div class="col-6 col-md-4">
+                            <div class="grid_item">
+                                <span class="ribbon hot">Hot</span>
+                                <figure>
+                                    <a href="@Url.Action("Product", "Home",new {id = sp.ID_SP })">
+                                        <img class="img-fluid lazy" src="@sp.ANH_SP" data-src="@sp.ANH_SP" alt="@sp.TENSP">
+                                    </a>
+                                </figure>
+                                <a href="product-detail-1.html">
+                                    <h3>@sp.TENSP</h3>
                                 </a>
-                            </figure>
-                            <a href="product-detail-1.html">
-                                <h3>@sp.TENSP</h3>
-                            </a>
-                            <div class="price_box">
-                                <span class="new_price">@string.Format("{0:N0}", sp.GIATIEN) @sp.DONVITINH</span>
+                                <div class="price_box">
+                                    <span class="new_price">@string.Format("{0:N0}", sp.GIATIEN) @sp.DONVITINH</span>
+                                </div>
+                                @*<ul>
+                            <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                            <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+                            <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+                        </ul>*@
                             </div>
-                            @*<ul>
-                                <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                                <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-                                <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-                            </ul>*@
+                            <!-- /grid_item -->
                         </div>
-                        <!-- /grid_item -->
-                    </div>
-                    <!-- /col -->
+                        <!-- /col -->
+                    }
                 }
+                else
+                {
+                    <h3>Không tìm thấy</h3>
+                }
+
 
 
             </div>
             <!-- /row -->
-            <div class="pagination__wrapper">
-                <ul class="pagination">
-                    <li>
-                        <a href="@if (ViewBag.Page != 1) {
-                        @Url.Action("Products", "Home", new { loai = ViewBag.loai,brand = ViewBag.brand, paging = ViewBag.Page-1})
+            @if (ViewBag.MaxPage > 0)
+            {
+                <div class="pagination__wrapper">
+                    <ul class="pagination">
+                        <li>
+                            <a href="@if (ViewBag.Page != 1) {
+                        @Url.Action("Search", "Home", new { q = ViewBag.Search,brand = ViewBag.brand, paging = ViewBag.Page-1})
                     }#" class="prev" title="previous page">&#10094;</a>
-                    </li>
-                    @for (int page = 1; page <= ViewBag.MaxPage; page++)
-                    {
-            <li>
-                <a href="@Url.Action("Products", "Home", new { loai = ViewBag.loai,brand = ViewBag.brand, paging = page})" @((page == ViewBag.Page) ? "class=\"active\"" : "")>@page</a>
-            </li>}
+                        </li>
+                        @for (int page = 1; page <= ViewBag.MaxPage; page++)
+                        {
+                            <li>
+                                <a href="@Url.Action("Products", "Home", new { loai = ViewBag.loai,brand = ViewBag.brand, paging = page})" @((page == ViewBag.Page) ? "class=\"active\"" : "")>@page</a>
+                            </li>
+                        }
 
-                    <li>
-                        <a href="@if (ViewBag.Page != ViewBag.MaxPage) {
-                        @Url.Action("Products", "Home", new { loai = ViewBag.loai,brand = ViewBag.brand, paging = ViewBag.Page+1})
+                        <li>
+                            <a href="@if (ViewBag.Page != ViewBag.MaxPage) {
+                        @Url.Action("Search", "Home", new { q = ViewBag.Search,brand = ViewBag.brand, paging = ViewBag.Page+1})
                     }#" class="next" title="next page">&#10095;</a>
-                    </li>
-                </ul>
-            </div>
+                        </li>
+                    </ul>
+                </div>
+            }
+
         </div>
         <!-- /col -->
     </div>
     <!-- /row -->
 
 </div>
-<script>function checkbox_to_value() {
+<script>
+function checkbox_to_value() {
         let arr_brand = [];
         $(".FilterBrandCheckBox:checked").each(function () {
             arr_brand.push($(this).val());
@@ -151,3 +165,4 @@
 <!-- SPECIFIC SCRIPTS -->
 <script src="/assets/js/sticky_sidebar.min.js"></script>
 <script src="/assets/js/specific_listing.js"></script>
+
