@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="THINKPROModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="ID_SP" />
+    </Key>
+    <Property Name="ID_SP" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ID_BRAND" Type="varchar" MaxLength="10" />
+    <Property Name="ID_LOAI" Type="varchar" MaxLength="10" />
+    <Property Name="TENSP" Type="nvarchar" MaxLength="50" />
+    <Property Name="ANH_SP" Type="varchar" MaxLength="500" />
+    <Property Name="GIATIEN" Type="float" />
+    <Property Name="DONVITINH" Type="nvarchar" MaxLength="20" />
+    <Property Name="SOLUONGTONKHO" Type="int" />
+    <Property Name="ID_TINHTRANG" Type="varchar" MaxLength="10" />
+    <Property Name="THOIHAN_BH" Type="nvarchar" MaxLength="20" />
+    <Property Name="THONGTIN" Type="ntext" />
+  </EntityType>
+  <EntityContainer Name="THINKPROModelStoreContainer">
+    <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

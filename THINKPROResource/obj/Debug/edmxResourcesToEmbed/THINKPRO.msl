@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="THINKPROModelStoreContainer" CdmEntityContainer="THINKPROEntities">
+    <EntitySetMapping Name="SANPHAMs">
+      <EntityTypeMapping TypeName="THINKPROModel.SANPHAM">
+        <MappingFragment StoreEntitySet="SANPHAM">
+          <ScalarProperty Name="ID_SP" ColumnName="ID_SP" />
+          <ScalarProperty Name="ID_BRAND" ColumnName="ID_BRAND" />
+          <ScalarProperty Name="ID_LOAI" ColumnName="ID_LOAI" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="ANH_SP" ColumnName="ANH_SP" />
+          <ScalarProperty Name="GIATIEN" ColumnName="GIATIEN" />
+          <ScalarProperty Name="DONVITINH" ColumnName="DONVITINH" />
+          <ScalarProperty Name="SOLUONGTONKHO" ColumnName="SOLUONGTONKHO" />
+          <ScalarProperty Name="ID_TINHTRANG" ColumnName="ID_TINHTRANG" />
+          <ScalarProperty Name="THOIHAN_BH" ColumnName="THOIHAN_BH" />
+          <ScalarProperty Name="THONGTIN" ColumnName="THONGTIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
