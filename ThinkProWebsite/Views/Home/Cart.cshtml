@@ -90,7 +90,15 @@
                             <span>Tổng tiền</span> @string.Format("{0:N0}", ViewBag.SubTotal) VNĐ
                         </li>
                     </ul>
-                    <a href="cart-2.html" class="btn_1 full-width cart text-center">ĐẶT HÀNG NGAY</a>
+                    @if (Session["Account"] == null)
+                    {
+                        <a href="@Url.Action("DangNhap","Home")" class="btn_1 full-width cart text-center">ĐĂNG NHẬP ĐỂ ĐẶT HÀNG</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("CartDone","Home")" class="btn_1 full-width cart text-center">ĐẶT HÀNG NGAY</a>
+                    }
+
                 </div>
             </div>
         </div>

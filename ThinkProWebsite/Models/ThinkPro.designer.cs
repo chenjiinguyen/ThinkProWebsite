@@ -75,7 +75,7 @@ namespace ThinkProWebsite.Models
     #endregion
 		
 		public ThinkProDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["THINKPROConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["THINKPROConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -252,7 +252,7 @@ namespace ThinkProWebsite.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HD", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HD", DbType="VarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string ID_HD
 		{
 			get
@@ -1094,8 +1094,6 @@ namespace ThinkProWebsite.Models
 		
 		private System.Nullable<System.DateTime> _NGAYLAPHD;
 		
-		private System.Nullable<double> _THANHTOAN;
-		
 		private string _GHICHU;
 		
 		private string _ID_NV;
@@ -1114,8 +1112,6 @@ namespace ThinkProWebsite.Models
     partial void OnID_USERChanged();
     partial void OnNGAYLAPHDChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYLAPHDChanged();
-    partial void OnTHANHTOANChanging(System.Nullable<double> value);
-    partial void OnTHANHTOANChanged();
     partial void OnGHICHUChanging(string value);
     partial void OnGHICHUChanged();
     partial void OnID_NVChanging(string value);
@@ -1129,7 +1125,7 @@ namespace ThinkProWebsite.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HD", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HD", DbType="VarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string ID_HD
 		{
 			get
@@ -1189,26 +1185,6 @@ namespace ThinkProWebsite.Models
 					this._NGAYLAPHD = value;
 					this.SendPropertyChanged("NGAYLAPHD");
 					this.OnNGAYLAPHDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THANHTOAN", DbType="Float")]
-		public System.Nullable<double> THANHTOAN
-		{
-			get
-			{
-				return this._THANHTOAN;
-			}
-			set
-			{
-				if ((this._THANHTOAN != value))
-				{
-					this.OnTHANHTOANChanging(value);
-					this.SendPropertyChanging();
-					this._THANHTOAN = value;
-					this.SendPropertyChanged("THANHTOAN");
-					this.OnTHANHTOANChanged();
 				}
 			}
 		}
@@ -2359,7 +2335,7 @@ namespace ThinkProWebsite.Models
 		
 		private string _DONVITINH;
 		
-		private System.Nullable<int> _SOLUONG;
+		private System.Nullable<int> _SOLUONGTONKHO;
 		
 		private string _ID_TINHTRANG;
 		
@@ -2399,8 +2375,8 @@ namespace ThinkProWebsite.Models
     partial void OnGIATIENChanged();
     partial void OnDONVITINHChanging(string value);
     partial void OnDONVITINHChanged();
-    partial void OnSOLUONGChanging(System.Nullable<int> value);
-    partial void OnSOLUONGChanged();
+    partial void OnSOLUONGTONKHOChanging(System.Nullable<int> value);
+    partial void OnSOLUONGTONKHOChanged();
     partial void OnID_TINHTRANGChanging(string value);
     partial void OnID_TINHTRANGChanged();
     partial void OnTHOIHAN_BHChanging(string value);
@@ -2569,22 +2545,22 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOLUONG", DbType="Int")]
-		public System.Nullable<int> SOLUONG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOLUONGTONKHO", DbType="Int")]
+		public System.Nullable<int> SOLUONGTONKHO
 		{
 			get
 			{
-				return this._SOLUONG;
+				return this._SOLUONGTONKHO;
 			}
 			set
 			{
-				if ((this._SOLUONG != value))
+				if ((this._SOLUONGTONKHO != value))
 				{
-					this.OnSOLUONGChanging(value);
+					this.OnSOLUONGTONKHOChanging(value);
 					this.SendPropertyChanging();
-					this._SOLUONG = value;
-					this.SendPropertyChanged("SOLUONG");
-					this.OnSOLUONGChanged();
+					this._SOLUONGTONKHO = value;
+					this.SendPropertyChanged("SOLUONGTONKHO");
+					this.OnSOLUONGTONKHOChanged();
 				}
 			}
 		}

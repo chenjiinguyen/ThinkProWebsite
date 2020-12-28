@@ -1,0 +1,32 @@
+﻿@model ThinkProWebsite.Models.NGUOIDUNG
+
+<div class="dropdown dropdown-access">
+
+    <a href="#" class="access_link"><span>Account</span></a>
+    <div class="dropdown-menu">
+        @if (Model == null)
+        {
+            <a href="@Url.Action("DangNhap","Home")" class="btn_1">Đăng Nhập</a>
+        }
+        else
+        {
+    <ul>
+        <li>
+            <a href="#">
+            <i><img class="img-thumbnail" width="32" style="vertical-align: middle;  border-radius: 50%;" src="@Model.AVATAR"></i>
+            
+            @Model.HOTEN</a>
+        </li>
+        <li>
+            <a href="#"> <i class="ti-user"></i>@Model.DIENTHOAI</a>
+        </li>
+        <li>
+            <a href="@Url.Action("DangXuat","Home")"><i class="ti-help-alt"></i>Đăng Xuất</a>
+        </li>
+    </ul>
+        }
+
+        
+    </div>
+</div>
+<!-- /dropdown-access-->

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.25" name="ThinkPro">
+  <DataContextMoniker Name="/ThinkProDataContext" />
+  <nestedChildShapes>
+    <classShape Id="22255cf3-9134-4814-b7ab-bf344b37a053" absoluteBounds="3.5, 6.125, 2, 2.9247054036458318">
+      <DataClassMoniker Name="/ThinkProDataContext/SANPHAM" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f3c9fbba-92ec-42c8-976e-62e44e5766f1" absoluteBounds="3.515, 6.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

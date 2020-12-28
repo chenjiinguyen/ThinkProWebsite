@@ -2,7 +2,7 @@
 
 
 <div class="dropdown dropdown-cart">
-    <a href="cart.html" class="cart_bt"><strong>@ViewBag.CountCart</strong></a>
+    <a href=" @Url.Action( "Cart", "Home")" class="cart_bt"><strong>@ViewBag.CountCart</strong></a>
     <div class="dropdown-menu">
         @if(Model.Count > 0) { 
         <ul>

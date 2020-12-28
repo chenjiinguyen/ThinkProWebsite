@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Đăng Ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center" style="margin:50px 0;">
+    <div class="col-xl-6 col-lg-6 col-md-8">
+        <div class="box_account">
+            <h3 class="new_client">Đăng ký mới</h3> <small class="float-right pt-2">* Bắt buộc phải nhập</small>
+            <div class="form_container">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Email*" />@ViewData["Loi1"]
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="matkhau" placeholder="Mật khẩu*">@ViewData["Loi3"]
+                    </div>
+                    <div class="form-group">
+
+                        <input type="password" class="form-control" name="nhaplaimatkhau" placeholder="Nhập lại mật khẩu*">@ViewData["Loi4"]
+                        <span style="color:red;">@ViewBag.LoiRePass</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="hoten" placeholder="Họ và tên*">@ViewData["Loi2"]
+                    </div>
+                    <div class="form-group">
+                        <label class="container_radio" style="display: inline-block; margin-right: 15px;">
+                            Nam
+                            <input type="radio" name="gioitinh" checked="" value="Name">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container_radio" style="display: inline-block;">
+                            Nữ
+                            <input type="radio" name="gioitinh" value="Nữ">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-6 pr-1">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="dienthoai" placeholder="Số điện thoại*">@ViewData["Loi5"]
+                            </div>
+                        </div>
+                        <div class="col-6 pl-1">
+                            <div class="form-group">
+                                <input type="text" name="diachi" class="form-control" placeholder="Địa chỉ (địa chỉ nhà, địa chỉ cơ quan)">@ViewData["Loi6"]
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center"><input type="submit" value="Đăng ký" class="btn_1 full-width"></div>
+                }
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

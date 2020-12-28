@@ -59,33 +59,13 @@
                         <div class="col-xl-3 col-lg-2 col-md-3">
                             <ul class="top_tools">
                                 <li>
-                                    @Html.Action("CartPartial","Partial")
-                                </li>
-                                <li>
                                     <a href="#0" class="wishlist"><span>Wishlist</span></a>
                                 </li>
                                 <li>
-                                    <div class="dropdown dropdown-access">
-                                        <a href="account.html" class="access_link"><span>Account</span></a>
-                                        <div class="dropdown-menu">
-                                            <a href="account.html" class="btn_1">Sign In or Sign Up</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="track-order.html"><i class="ti-truck"></i>Track your Order</a>
-                                                </li>
-                                                <li>
-                                                    <a href="account.html"><i class="ti-package"></i>My Orders</a>
-                                                </li>
-                                                <li>
-                                                    <a href="account.html"><i class="ti-user"></i>My Profile</a>
-                                                </li>
-                                                <li>
-                                                    <a href="help.html"><i class="ti-help-alt"></i>Help and Faq</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- /dropdown-access-->
+                                    @Html.Action("CartPartial", "Partial")
+                                </li>
+                                <li>
+                                    @Html.Action("AccountPartial", "Partial")
                                 </li>
                                 <li>
                                     <a href="javascript:void(0);" class="btn_search_mob"><span>Search</span></a>
@@ -127,12 +107,10 @@
                         <h3 data-target="#collapse_1">Quick Links</h3>
                         <div class="collapse dont-collapse-sm links" id="collapse_1">
                             <ul>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="help.html">Faq</a></li>
-                                <li><a href="help.html">Help</a></li>
-                                <li><a href="account.html">My account</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="contacts.html">Contacts</a></li>
+                                <li><a href="#">Nguyễn Duy</a></li>
+                                <li><a href="#">Như Quỳnh</a></li>
+                                <li><a href="#">Như Ý</a></li>
+                                <li><a href="#">Đức Huy</li>
                             </ul>
                         </div>
                     </div>
@@ -140,12 +118,10 @@
                         <h3 data-target="#collapse_2">Categories</h3>
                         <div class="collapse dont-collapse-sm links" id="collapse_2">
                             <ul>
-                                <li><a href="listing-grid-1-full.html">Clothes</a></li>
-                                <li><a href="listing-grid-2-full.html">Electronics</a></li>
-                                <li><a href="listing-grid-1-full.html">Furniture</a></li>
-                                <li><a href="listing-grid-3.html">Glasses</a></li>
-                                <li><a href="listing-grid-1-full.html">Shoes</a></li>
-                                <li><a href="listing-grid-1-full.html">Watches</a></li>
+                                <li><a href="#">Nguyễn Duy</a></li>
+                                <li><a href="#">Như Quỳnh</a></li>
+                                <li><a href="#">Như Ý</a></li>
+                                <li><a href="#">Đức Huy</li>
                             </ul>
                         </div>
                     </div>
@@ -160,23 +136,10 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h3 data-target="#collapse_4">Keep in touch</h3>
+                        <h3 data-target="#collapse_4">Thời Tiết Hôm Nay</h3>
                         <div class="collapse dont-collapse-sm" id="collapse_4">
-                            <div id="newsletter">
-                                <div class="form-group">
-                                    <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Your email">
-                                    <button type="submit" id="submit-newsletter"><i class="ti-angle-double-right"></i></button>
-                                </div>
-                            </div>
-                            <div class="follow_us">
-                                <h5>Follow Us</h5>
-                                <ul>
-                                    <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="/assets/img/twitter_icon.svg" alt="" class="lazy"></a></li>
-                                    <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="/assets/img/facebook_icon.svg" alt="" class="lazy"></a></li>
-                                    <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="/assets/img/instagram_icon.svg" alt="" class="lazy"></a></li>
-                                    <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="/assets/img/youtube_icon.svg" alt="" class="lazy"></a></li>
-                                </ul>
-                            </div>
+                            <!-- the DIV that will contain the widget -->
+                            <div class="weatherWidget"></div>
                         </div>
                     </div>
                 </div>
@@ -190,8 +153,8 @@
                                     <select>
                                         <option value="Vietnamese" selected>Việt Nam</option>
                                         @*<option value="French">French</option>
-                                        <option value="Spanish">Spanish</option>
-                                        <option value="Russian">Russian</option>*@
+                                            <option value="Spanish">Spanish</option>
+                                            <option value="Russian">Russian</option>*@
                                     </select>
                                 </div>
                             </li>
@@ -199,7 +162,7 @@
                                 <div class="styled-select currency-selector">
                                     <select>
                                         <option value="VND" selected>Vietnam Dong</option>
-                                        <option value="US Dollars" >US Dollars</option>
+                                        <option value="US Dollars">US Dollars</option>
 
                                     </select>
                                 </div>
@@ -225,6 +188,25 @@
     <!-- COMMON SCRIPTS -->
     <script src="~/assets/js/common_scripts.min.js"></script>
     <script src="~/assets/js/main.js"></script>
+    <script>
+        window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+        window.weatherWidgetConfig.push({
+            selector: ".weatherWidget",
+            apiKey: "WJ55UQXZLJRHXGJ3SV2Z2K6MG", //Sign up for your personal key
+            location: "Ho Chi Minh,VN", //Enter an address
+            unitGroup: "metric", //"us" or "metric"
+            forecastDays: 5, //how many days forecast to show
+            title: "Ho Chi Minh", //optional title to show in the
+            showTitle: true,
+            showConditions: true
+        });
 
+        (function () {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 </body>
 </html>

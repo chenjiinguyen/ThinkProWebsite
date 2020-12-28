@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="CHITIETPN.cs">
+      <DependentUpon>THINKPRO.tt</DependentUpon>
+    </Compile>
+    <Compile Update="HOADON.cs">
+      <DependentUpon>THINKPRO.tt</DependentUpon>
+    </Compile>
+    <Compile Update="NGUOIDUNG.cs">
+      <DependentUpon>THINKPRO.tt</DependentUpon>
+    </Compile>
+    <Compile Update="NHANVIEN.cs">
+      <DependentUpon>THINKPRO.tt</DependentUpon>
+    </Compile>
+    <Compile Update="sysdiagram.cs">
+      <DependentUpon>THINKPRO.tt</DependentUpon>
+    </Compile>
+    <Compile Update="THINKPRO.cs">
+      <DependentUpon>THINKPRO.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="THINKPRO1.Designer.cs">
+      <DependentUpon>THINKPRO.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="THUONGHIEU.cs">
+      <DependentUpon>THINKPRO.tt</DependentUpon>
+    </Compile>
+    <Compile Update="VAITRO.cs">
+      <DependentUpon>THINKPRO.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

@@ -86,6 +86,11 @@ namespace ThinkProWebsite.Controllers
             return PartialView(lstCart);
         }
 
+        public ActionResult AccountPartial() {
+            var Account = Session["Account"];
+            return PartialView(Account);
+        } 
+
         public List<Cart> getCart()
         {
             List<Cart> lstCart = Session["Cart"] as List<Cart>;
