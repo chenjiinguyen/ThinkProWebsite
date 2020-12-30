@@ -159,6 +159,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ThinkPro.dbml</DependentUpon>
     </Compile>
+    <Compile Include="ProductWebService.asmx.cs">
+      <DependentUpon>ProductWebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -414,6 +418,7 @@
     <Content Include="assets\css\fonts\themify.eot" />
     <Content Include="assets\css\fonts\themify.ttf" />
     <Content Include="assets\css\fonts\themify.woff" />
+    <Content Include="ProductWebService.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

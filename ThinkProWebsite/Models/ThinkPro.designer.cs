@@ -2331,7 +2331,7 @@ namespace ThinkProWebsite.Models
 		
 		private string _ANH_SP;
 		
-		private System.Nullable<double> _GIATIEN;
+		private System.Nullable<int> _GIATIEN;
 		
 		private string _DONVITINH;
 		
@@ -2371,7 +2371,7 @@ namespace ThinkProWebsite.Models
     partial void OnTENSPChanged();
     partial void OnANH_SPChanging(string value);
     partial void OnANH_SPChanged();
-    partial void OnGIATIENChanging(System.Nullable<double> value);
+    partial void OnGIATIENChanging(System.Nullable<int> value);
     partial void OnGIATIENChanged();
     partial void OnDONVITINHChanging(string value);
     partial void OnDONVITINHChanged();
@@ -2505,8 +2505,8 @@ namespace ThinkProWebsite.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIATIEN", DbType="Float")]
-		public System.Nullable<double> GIATIEN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIATIEN", DbType="Int")]
+		public System.Nullable<int> GIATIEN
 		{
 			get
 			{

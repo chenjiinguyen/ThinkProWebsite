@@ -110,7 +110,7 @@
       <Column Name="ID_LOAI" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="TENSP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ANH_SP" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="GIATIEN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GIATIEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DONVITINH" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="SOLUONGTONKHO" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ID_TINHTRANG" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
