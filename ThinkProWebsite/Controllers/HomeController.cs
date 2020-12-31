@@ -135,7 +135,7 @@ namespace ThinkProWebsite.Controllers
         }
 
 
-       
+
 
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace ThinkProWebsite.Controllers
             }
         }
 
-        
+
 
         public ActionResult Cart()
         {
@@ -181,7 +181,66 @@ namespace ThinkProWebsite.Controllers
             return View(lstCart);
         }
 
-        
+        [HttpPost]
+        public ActionResult AddCart(string id, int quatity,string strURL)
+        {
+            try
+            {
+
+                List<Cart> lstCart = getCart();
+                Cart product = lstCart.Find(sp => sp.idProduct == id);
+                if (product == null)
+                {
+                    product = new Cart(id);
+                    product.iQuantity = quatity;
+                    lstCart.Add(product);
+                }
+                else
+                { 
+                    product.iQuantity += quatity;
+                    
+                }
+                return Redirect(strURL);
+            }
+            catch
+            {
+                return Redirect(strURL);
+            }
+        }
+
+        public ActionResult UpdateCart(string id, int iQuantity)
+        {
+            try
+            {
+                List<Cart> lstCart = getCart();
+                Cart product = lstCart.Find(sp => sp.idProduct == id);
+                if (product == null)
+                {
+                    product = new Cart(id);
+                    product.iQuantity = iQuantity;
+                    lstCart.Add(product);
+                }
+                else
+                {
+                    if(iQuantity <= 0)
+                    {
+                        lstCart.RemoveAll(s => s.idProduct == id);
+                    }
+                    else
+                    {
+                        product.iQuantity = iQuantity;
+                    }
+                    
+
+                }
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
         public ActionResult DeleteCart(string idP)
         {

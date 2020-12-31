@@ -16,9 +16,9 @@
         <div class="page_header">
             <div class="breadcrumbs">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Category</a></li>
-                    <li>Page active</li>
+                    <li><a href="@Url.Action("Index","Home")">Trang Chủ</a></li>
+                    <li><a href="@Url.Action("Products","Home")">Sản Phẩm</a></li>
+                    <li>@ViewBag.Title</li>
                 </ul>
             </div>
             <h1>Giỏ Hàng</h1>
@@ -58,8 +58,9 @@
                             <strong>@string.Format("{0:N0}", product.pPrice) VNĐ</strong>
                         </td>
                         <td>
-                            <div class="text-weight-bold ml-4">
-                                @product.iQuantity
+                            <div class="numbers-row">
+                                <input type="text" id="iQuantity" class="qty2 updateProduct" name="iQuantity" data-id-product="@product.idProduct" value="@product.iQuantity">
+                                <div class="inc button_inc">+</div><div class="dec button_inc">-</div>
                             </div>
                         </td>
                         <td>
@@ -74,17 +75,24 @@
 
             </tbody>
         </table>
+        <div class="row add_top_30 flex-sm-row-reverse cart_actions">
+            <div class="col-sm-4 text-right">
+                <button type="button" id="UpdateCart" class="btn_1 gray">Cập Nhật Giỏ Hàng</button>
+            </div>
+            <div class="col-sm-8">
 
+            </div>
+            <!-- /cart_actions -->
 
-        <!-- /cart_actions -->
+        </div>
+        <!-- /container -->
 
     </div>
-    <!-- /container -->
-
     <div class="box_cart">
         <div class="container">
             <div class="row justify-content-end">
                 <div class="col-xl-4 col-lg-4 col-md-6">
+
                     <ul>
                         <li>
                             <span>Tổng tiền</span> @string.Format("{0:N0}", ViewBag.SubTotal) VNĐ
@@ -108,5 +116,31 @@
 
 
 </main>
-<script src="js/common_scripts.min.js"></script>
-<script src="js/main.js"></script>
+<script src="/assets/js/common_scripts.min.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#UpdateCart").click(function (e) {
+            e.preventDefault();
+            $(".updateProduct").each(function(){
+                $.ajax({
+                    url: "@Url.Action("UpdateCart","Home")", // gửi ajax đến file result.php
+                    type: "get", // chọn phương thức gửi là get
+                    dateType: "text", // dữ liệu trả về dạng text
+                    data: { // Danh sách các thuộc tính sẽ gửi đi
+                        iQuantity: $(this).val(),
+                        id: $(this).attr('data-id-product'),
+                    },
+                    success: function (result) {
+                        // Sau khi gửi và kết quả trả về thành công thì gán nội dung trả về
+                        // đó vào thẻ div có id = result
+                        console.log(result);
+                    }
+                });
+            });
+            window.location.href = window.location.href;
+        });
+
+    });
+
+</script>

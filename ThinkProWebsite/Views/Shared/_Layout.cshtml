@@ -115,17 +115,6 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h3 data-target="#collapse_2">Categories</h3>
-                        <div class="collapse dont-collapse-sm links" id="collapse_2">
-                            <ul>
-                                <li><a href="#">Nguyễn Duy</a></li>
-                                <li><a href="#">Như Quỳnh</a></li>
-                                <li><a href="#">Như Ý</a></li>
-                                <li><a href="#">Đức Huy</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
                         <h3 data-target="#collapse_3">Contacts</h3>
                         <div class="collapse dont-collapse-sm contacts" id="collapse_3">
                             <ul>
@@ -133,6 +122,12 @@
                                 <li><i class="ti-headphone-alt"></i>+94 423-23-221</li>
                                 <li><i class="ti-email"></i><a href="#0">info@allaia.com</a></li>
                             </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h3 data-target="#collapse_2">Địa Chỉ</h3>
+                        <div class="collapse dont-collapse-sm links" id="collapse_2">
+                            <iframe frameborder="0" style="height: 200px" class="embed-responsive" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.057453858191!2d106.62640705085774!3d10.806911692263071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752be27d8b4f4d%3A0x9f7b3cc581e940f5!2zMTQwIEzDqiBUcuG7jW5nIFThuqVuLCBUw6J5IFRo4bqhbmgsIFTDom4gUGjDuiwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1609380972495!5m2!1svi!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -208,5 +203,28 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v9.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat"
+         attribution=setup_tool
+         page_id="103468794433368">
+    </div>
 </body>
 </html>
